@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- <link rel="stylesheet" href="css/nav1.css"> -->
+    <link rel="stylesheet" href="css/nav2.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- trying different layout by placing nav element before header element -->
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="projects.html">My Projects</a></li>
+                <li><a href="contact.html" class="current">Contact Me</a></li>
+            </ul>
+        </nav>
+        <!-- We left the header to be empty just to place a background image inside it using CSS -->
+        <header>
+
+        </header>
+
+        <aside class="sidebar">
+            <h2>We provide:</h2>
+            <ul>
+                <li>Web Design</li>
+                <li>Graphic Design</li>
+                <li>Web Development</li>
+                <li>Web Hosting Services</li>
+                <li>Printing and Publishing</li>
+                <li>Advertising</li>
+                <li>Marketing</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <form id="form2" name="form1" method="post" action="">
+                <label for="fname">First Name:</label>
+                <!-- 
+                    attribute "autocomplete"
+                    either "on" or "off"
+
+                    attribute "autofocus" to put the cursor "insertion point" inside the field
+                    when we open the page
+                 -->
+                <input type="text" autofocus autocomplete="off" name="fname" id="fname" required="required">
+
+                <label for="lname">Last Name:</label>
+                <input type="text" name="lname" id="lname" required>
+
+                <label for="email">Email:</label>
+                <input type="email" autocomplete="off" name="email" id="email">
+
+                <!-- 
+                    - disabled attribute 
+                    We can disable this field by adding the attribute "disabled"
+                    to disable the current field 
+                -->
+                <label for="date">Date of Birth:</label>
+                <input type="date" name="date" id="date">
+
+                <label for="age">Age:</label>
+                <input type="number" readonly name="age" id="age">
+
+                <label for="message">Message:</label>
+                <textarea name="message" id="message"></textarea>
+                <div class="buttons">
+                    <input type="submit" name="submit" id="submit" value="Submit">
+                    <input type="reset" name="reset" id="reset" value="Reset">
+                </div>
+            </form>
+        </main>
+        <footer>Copyright &copy; 2021 - My Portfolio - HTML-CSS Module</footer>
+    </div>
+</body>
+
+</html>

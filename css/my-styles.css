@@ -1,0 +1,38 @@
+/* Just to practice the external rules */
+
+/*
+    
+    The basic template:
+
+    selector-name {
+        property1:value;
+        property2:value;
+        property3:value;
+    }
+*/
+
+/* 
+target the body element to change its background color:
+*/
+body {
+    /* I want to apply a background color of light green to the body element */
+    background-color: lightgreen;
+    color: darkred;
+}
+
+/* 
+Target the aside element
+*/
+aside {
+    background-color: lightgray;
+    /* Style the text inside this element to make upper-case */
+    text-transform: uppercase;
+}
+
+/* 
+Target/style the footer element
+*/
+footer {
+    background-color: lightskyblue;
+    text-align: center;
+}

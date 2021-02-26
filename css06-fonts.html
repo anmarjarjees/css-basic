@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Fonts</title>
+    <style>
+        /* Using Google Font: */
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+
+
+        /* CTRL+/ ==> To toggle the comments in VSC */
+
+        body {
+            /* 
+            for learning, we are using many font-family 
+            but only the last one (rule) will be applied 
+            */
+
+            /* 
+            First two font family are the preferred ones,
+            while the sans-serif is a fallback. Font will
+            fall back to sans serif if preferred font-family was not loaded.
+            */
+
+            /* We need to use single/double quotes for any font name that has spaces: */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        /* 
+        The web safe font:
+        https://www.w3schools.com/cssref/css_websafe_fonts.asp
+        */
+
+        /* 
+        Google Font: https://fonts.google.com/
+        */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni possimus, reiciendis earum veritatis
+            consequatur
+            sequi! Dolorum magni, repellat accusamus et quam omnis adipisci! Inventore, laudantium assumenda eveniet
+            ullam
+            consequatur optio?</p>
+
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem enim accusamus excepturi nesciunt, omnis
+            incidunt quia quaerat repudiandae ut impedit ipsa eaque, consequatur maxime quae est delectus aperiam eius?
+            Incidunt!
+        </p>
+
+        <article class="main">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis tempora, non ea cupiditate voluptatem
+                molestias nostrum animi esse maiores. Mollitia consectetur blanditiis totam adipisci, laborum corporis
+                perspiciatis at natus veniam?</p>
+        </article>
+
+
+        <article class="main">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam recusandae placeat nulla
+                velit
+                nesciunt nobis explicabo a! Eius, recusandae modi iste ipsa tenetur vel nobis nulla quam aut iusto.
+            </p>
+        </article>
+
+        <aside>
+            <p>
+                Here is the aside lorem: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti voluptatibus
+                deserunt libero aperiam excepturi alias architecto sapiente accusantium dolorum officia in aut possimus
+                consectetur, harum laboriosam id. Aliquid, doloremque reprehenderit.
+            </p>
+        </aside>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--	
+        First Step:
+        By default Mobile devices zoom out the page 
+        to make it all fit within the screen of our mobile devices. 
+        We need to disable this default feature using meta element:
+
+        for any Responsive website, we have to add this line of code:
+        we can just copy the following template line from w3schools
+    -->
+    <!-- using meta element -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWD Part2</title>
+    <!-- RWD: Responsive Web Design -->
+    <!-- Internal Styles -->
+    <style>
+        /* 
+        Two main parts:
+        - Global Styles: the styles that we need for every device/view-port
+         the rules (styles) that applied to any media (or and device)
+        - Specific Styles: the styles that we need for specific devices/view-ports
+        */
+
+
+        /* Global Styles for any device */
+
+        /* 
+        to override the default styles for the browsers 
+        like adding margins for p or div elements etc...
+	*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+	we need to make sure that the new HTML5 elements 
+    that we use in this website are displayed as block elements 
+    only for the very old browsers versions
+*/
+        header,
+        footer,
+        section,
+        article,
+        main,
+        aside,
+        nav,
+        figure,
+        figcaption {
+            display: block;
+        }
+
+        div.wrapper {
+            /* specify the width and centre it  */
+            background-color: #D3D1D1;
+            /* With RWD: max-width with pixel or width with % */
+            max-width: 1500px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            border-top: 5px solid #B38C06;
+            border-bottom: 5px solid #B38C06;
+        }
+
+        main {
+            /* 
+            This property to fix the issue with the floating 
+            maybe we need this rule to work with 2 media queries medium and large
+            */
+            overflow: hidden;
+        }
+
+        /* 
+        We can put the float left to be global because we want to apply the same rules 
+        for 2 media queries:
+        - Tablet with hight resolutions like (iPad Pro)
+        - Desktop-laptop (Large screens)
+
+        similar to MDN website:
+        */
+        main section,
+        main aside {
+            float: left;
+        }
+
+        main section {
+            background-color: #D1C0A6;
+            width: 60%;
+        }
+
+        main aside {
+            background-color: #C3C7AB;
+            width: 20%;
+        }
+
+        footer {
+            background: chocolate;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        /* We are done with the global styles above */
+
+        /* 
+	    Mobile First*: for mobile phones:
+	    w3schools*: This will make the page display faster on smaller devices
+	
+        Google:
+        iphonex: width 375px
+        iphone plus and Galaxy node9: width 41px
+        Galaxy S5: width 360px
+        iphone 5: width 320px
+        */
+
+        /* For mobile (Small Screen) */
+        @media only screen and (max-width: 415px) {
+
+            /*	for testing */
+            header {
+                background-color: brown;
+            }
+
+            /* 
+            Here we need to change the layout:
+            - aside (by itself)
+            - main (by itself)
+            - aside (by itself)
+
+            Remember that all of these elements have float: left;
+
+            We need to disable the float: left! for all of them
+            */
+            main section,
+            main aside {
+                /* We want to disable their floating property: */
+                float: none;
+                /* Now we just need to set the width to be 100% => like default */
+                width: 100%;
+            }
+
+        }
+
+        /* For tablet (Medium Screen) */
+        @media only screen and (min-width:416px) and (max-width:800px) {
+
+            /*	for testing no changes needed! */
+            header {
+                background-color: orange;
+            }
+        }
+
+        /* For desktop/laptop (Normal Screen) */
+        @media only screen and (min-width:801px) {
+
+            /*	for testing no changes needed! */
+            header {
+                background-color: lightblue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2>Green<span class="highlight">Start</span></h2>
+            <p>GreenStart Awareness In Action Always And All The Time</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="example1.html">Home</a></li>
+                <li><a href="#">Green events</a></li>
+                <li><a href="#">Green Travel</a></li>
+                <li><a href="#">Green Tips</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <aside class="sidebar1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab sapiente placeat quae sunt iste
+                    nemo,
+                    corporis, hic tempore ad enim? Itaque iure architecto libero alias aliquam nisi, dolores rerum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptates adipisci eum ipsam
+                    aspernatur,
+                    laborum culpa. Laudantium, aspernatur blanditiis a in quo. Ratione nam dolor suscipit totam
+                    veritatis
+                    ex. Et?</p>
+            </aside>
+
+            <section id="content">
+                <h1>Welcome to GreenSTart1</h1>
+                <article>
+                    <h2>Our Green Events</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A incidunt accusamus nam, excepturi,
+                        temporibus minus exercitationem veniam culpa pariatur. Repellendus dolorum facilis rem debitis
+                        ad.
+                        Eveniet maiores facere odio architecto.</p>
+                </article>
+                <article>
+                    <h2>Travel with GreenStart</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A incidunt accusamus nam, excepturi,
+                        temporibus minus exercitationem veniam culpa pariatur. Repellendus dolorum facilis rem debitis
+                        ad.
+                        Eveniet maiores facere odio architecto.</p>
+                </article>
+            </section>
+
+            <aside class="sidebar2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab sapiente placeat quae sunt iste
+                    nemo,
+                    corporis, hic tempore ad enim? Itaque iure architecto libero alias aliquam nisi, dolores rerum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptates adipisci eum ipsam
+                    aspernatur,
+                    laborum culpa. Laudantium, aspernatur blanditiis a in quo. Ratione nam dolor suscipit totam
+                    veritatis
+                    ex. Et?</p>
+            </aside>
+
+            <!-- One of the solution for fixing the floating issue -->
+            <!-- <div style="clear:both"></div> -->
+        </main>
+        <footer> &copy; 2021 GreenStart. All rights reserved. RWD Part 1</footer>
+    </div>
+</body>
+
+</html>

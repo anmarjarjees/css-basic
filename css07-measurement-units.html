@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement Units</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: beige;
+
+            /* 
+            A pixel is the basic unit of programmable color on a computer display. 
+            
+            The default font size for most web browsers is 16px  
+            which is equal to: 100%
+            which is equal to: 1 em
+            which is equal to: 1 rem
+            */
+
+            font-size: 16px;
+            /* Or: */
+            /* font-size: 100%; */
+            /* 
+            the default is 16px and the font-size is inherited  
+            */
+
+            /* 
+            Units Of Measurement - Em [M] 
+            Unlike pixels, which are a fixed measurement, 
+            em units are relative measurements. 
+            
+            In CSS, an em unit is equal to the computed font-size for the element 
+            to which the em is applied. 
+            
+            If no font size is defined anywhere in the CSS,
+            the em unit will be equal to the browser's default font size 
+            for the document, which is usually 16px.
+            
+            1em = 16px
+
+            Em Formula:
+            em size = pixel size that we want to use / 16px the current size
+            px size = the value in em x the value of the current size in pixel         
+            */
+
+            /* 
+            rem
+            Rem stands for the "root em" and it sets the size relative to the root element of the page.
+            
+            We can calculate rems by the following formula 
+            if the font-size of the body element is 16px: rem = pixels / 16
+
+            rems, unlike ems, are consistent.
+            They do not depend on the values set by the parents of the current element.            
+            */
+
+            /* Units Of Measurement - Percentage */
+            /* 
+            Percentage defines a value relative to the parent
+            */
+        }
+
+        .container {
+            /* Fixed width size: */
+            width: 1000px;
+            /* Non need to specify the height only with same special cases */
+            /* height: 300px; */
+            border: 1px solid red;
+        }
+
+        article {
+            padding: 0.2em;
+            /* 
+            The browser will convert %, em, rem to pixels in real time:
+
+            0.2em = px ?
+            
+            px size = the value in em x the value of the current size in pixel 
+            Chrome browser = .2em * 16px ==> 3.2 px
+            */
+        }
+
+        #first {
+            border: 1px solid red;
+            width: 900px;
+            /* 1em = 16px */
+        }
+
+        #second {
+            border: 1px solid blue;
+            /* 
+            Question:
+            width: 900px;
+            width: ? em; 
+            
+            em = 900px/16px = 56.25
+            800px => the size we want
+            16px => the font size for the element
+            */
+            width: 56.25em;
+        }
+
+        #third {
+            border: 1px solid green;
+            /* 
+            rem = pixels / 16 => 900/16
+            */
+            width: 56.25rem;
+        }
+
+        #forth {
+            border: 1px solid orange;
+            width: 50%;
+            /* 50% of the parent element width size ==> 500px */
+            /* 
+            The direct parent element of this article
+            is the div with id="container" (div#container)
+            the width size of this parent element 1000px;
+            so 50% of 1000px ==> 500px
+            */
+        }
+
+        /* 
+        vw: stands for the viewport width 
+        It sets the length for CSS properties that require length value. 
+        Percentage defines a value relative to the parent element
+        */
+        .box-vw {
+            /* The viewport is the area where the browser renders your web page.  */
+            width: 30vw;
+            height: 30vw;
+            background-color: #e84610;
+        }
+
+        /* 
+        vh: stands for the viewport height. 
+        This unit is relative to the height of the viewport 
+        which is the browser window size 
+        */
+        .box-hw {
+            width: 20vh;
+            height: 20vh;
+            background-color: #e84610;
+        }
+
+        /* adding the footer element to practice the em units  */
+        footer {
+            font-size: 11px;
+            /* 
+            em:
+            size in em => 11 / 16 
+            
+            We set the body font to 16 pixel (the default value)
+
+            1em = 16px
+
+            2em = 2 * 16px => the browser will show us 32px
+
+            The browser:
+            - the designer set the font size for the body to be 20 px
+            - the browser uses the pixel units
+            
+            value in pixel = value in em x value we set to the container
+            answer = 2em * 20px
+            the value in pixel = 40px;
+            ============================================================
+            rem:
+            if we set the value to: 2rem
+            the browser will used the calculation based on 16px
+
+            we set the size to 2rem => the browser => 2rem * 16px = 32px
+            if the size is 1rem => the browser => 1rem * 16px = 16px
+            */
+            /* font-size: 1rem; */
+
+            margin-top: 30px;
+            /* 
+            The two-case scenarios:
+            margin-top: 40px; ==> ?em / ?rem
+            rem = 40px/16px = 2.5em
+            em = 40px/20px = 2em
+
+            margin-top: 2em; ==> what's the value in pixel (browser)
+            margin-top: 2rem ==> what's the value in pixel (browser)
+
+            2em:
+            chrome = 2em * 16 pixel;
+            */
+            margin-top: 2em;
+
+            /* 
+            if no font size is specified, the browser will use 16px
+            1em = 16px
+            2em = 32px
+
+            the <body> font size is set to 20px
+            chrome = 1 [em] * 20 [px]
+            chrome = 2 [em] * 20 [px]
+            1em = 20px 
+            2em = 40px
+            
+            funny if we have the font size in 100px:
+            2em = 2 * 100 ==> 200px
+
+            If the font-size for this footer is set to "11px":
+            margin-top for this footer is set "2em"
+            chrome = 2 x 11 = 22px
+            */
+
+            /* 
+            2rem:
+            chrome = 2 [rem] * 16 [pixel] (the browser will always use 16px); 
+            */
+            /* margin-top: 2rem; */
+            /* 2rem = 32px */
+
+            background: burlywood;
+            border-top: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni possimus, reiciendis earum veritatis
+            consequatur
+            sequi! Dolorum magni, repellat accusamus et quam omnis adipisci! Inventore, laudantium assumenda eveniet
+            ullam
+            consequatur optio?</p>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem enim accusamus excepturi nesciunt, omnis
+            incidunt quia quaerat repudiandae ut impedit ipsa eaque, consequatur maxime quae est delectus aperiam eius?
+            Incidunt!
+        </p>
+
+        <article class="main" id="first">
+            <h2>Heading2 Main</h2>
+            <h3>Heading3 Main</h3>
+            <h4>Heading4 Main</h4>
+            <h5>Heading5 Main</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis tempora, non ea cupiditate voluptatem
+                molestias nostrum animi esse maiores. Mollitia consectetur blanditiis totam adipisci, laborum corporis
+                perspiciatis at natus veniam?</p>
+        </article>
+
+
+        <article class="main" id="second">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam recusandae placeat nulla
+                velit
+                nesciunt nobis explicabo a! Eius, recusandae modi iste ipsa tenetur vel nobis nulla quam aut iusto.
+            </p>
+        </article>
+
+        <article class="main" id="third">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam recusandae placeat nulla
+                velit
+                nesciunt nobis explicabo a! Eius, recusandae modi iste ipsa tenetur vel nobis nulla quam aut iusto.
+            </p>
+        </article>
+
+        <article class="main" id="forth">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam recusandae placeat nulla
+                velit
+                nesciunt nobis explicabo a! Eius, recusandae modi iste ipsa tenetur vel nobis nulla quam aut iusto.
+            </p>
+        </article>
+
+        <!-- 
+            This box will have a height and width of
+            30% of the window's width.
+            Try to resize the browser horizontally 
+            to see how the box adjusts to
+            the viewport. 
+        -->
+        <div class="box-vw">
+            <p>the content for box-vw</p>
+        </div>
+
+        <!-- 
+            This box will have wide and
+            high 20% of the window height. 
+            Try to resize the browser,
+            vertically, to see how the box adjusts 
+        -->
+        <div class="box-hw">
+            <p>the content for box-hw</p>
+        </div>
+        <aside>
+            <p>
+                Here is the aside lorem: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti voluptatibus
+                deserunt libero aperiam excepturi alias architecto sapiente accusantium dolorum officia in aut possimus
+                consectetur, harum laboriosam id. Aliquid, doloremque reprehenderit.
+            </p>
+        </aside>
+
+        <footer>
+            <p>Here is the footer content of this page - CBC - CSS Module</p>
+        </footer>
+</body>
+
+</html>

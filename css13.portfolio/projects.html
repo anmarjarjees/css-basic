@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- <link rel="stylesheet" href="css/nav1.css"> -->
+    <link rel="stylesheet" href="css/nav2.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- trying different layout by placing nav element before header element -->
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="projects.html" class="current">My Projects</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+        <!-- We left the header to be empty just to place a background image inside it using CSS -->
+        <header>
+
+        </header>
+
+        <aside class="sidebar">
+            <h2>We provide:</h2>
+            <ul>
+                <li>Web Design</li>
+                <li>Graphic Design</li>
+                <li>Web Development</li>
+                <li>Web Hosting Services</li>
+                <li>Printing and Publishing</li>
+                <li>Advertising</li>
+                <li>Marketing</li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>My Projects</h2>
+            <!--
+            we can add div element to place all our samples:
+            div.samples for Graphic Design
+            div.samples for Web Design
+            div.samples for Videos and Animate
+            -->
+            <div class="samples">
+                <h3>Graphic Design</h3>
+                <!-- 
+                place each image inside figure element
+                figure is a block level element so all the images will be placed vertically
+                -->
+                <figure> <img src="images/print-01.jpg" alt="Sunflowers">
+                    <figcaption>Sunflowers</figcaption>
+                </figure>
+                <figure> <img src="images/print-02.jpg" alt="Nice">
+                    <figcaption>Nice Flower</figcaption>
+                </figure>
+                <figure> <img src="images/print-03.jpg" alt="Roses">
+                    <figcaption>Roses</figcaption>
+                </figure>
+                <figure> <img src="images/print-04.jpg" alt="Olives">
+                    <figcaption>Olives Flowers</figcaption>
+                </figure>
+                <figure> <img src="images/print-05.jpg" alt="Green">
+                    <figcaption>Green Leaves</figcaption>
+                </figure>
+                <figure> <img src="images/print-06.jpg" alt="Spring">
+                    <figcaption>Spring Flowers</figcaption>
+                </figure>
+                <!-- 
+      - Another solution (Classical one) to avoid floating issues 
+      is to put a block level element at the end 
+      without any content just to apply the clear both style to it:
+	  - notice that we need to create this css rule for a class named "clear-div"
+	  .clear-div {
+		clear: both;
+	  }
+	 -->
+                <div class="clear-div">
+                    <!-- This empty div is created to demonstrate another (classical) way to avoid the floating issues that I explained in the lecture.
+	  Anyhow, we tried another way to fix this issue, so this div is not necessary it's created here just for learning purpose and to have an idea about what are the other possible solutions
+	  -->
+                </div>
+            </div> <!-- end div.samples -->
+
+
+            <div class="samples">
+                <h3 id="webdesign">Web Design</h3>
+                <!-- 
+place each image inside figure element
+figure is a block level element so all the images will be placed vertically
+-->
+                <figure>
+                    <a href="https://anmarjarjees.github.io/HTML-assignment/" title="open the website" target="_blank">
+                        <img src="images/print-01.jpg" alt="Sunflowers">
+                    </a>
+                    <figcaption><a href="https://github.com/anmarjarjees/HTML-assignment" title="read my code"
+                            target="_blank">Sunflowers</a></figcaption>
+                </figure>
+                <figure> <img src="images/print-02.jpg" alt="Nice">
+                    <figcaption>Nice Flower</figcaption>
+                </figure>
+                <figure> <img src="images/print-03.jpg" alt="Roses">
+                    <figcaption>Roses</figcaption>
+                </figure>
+                <figure> <img src="images/print-04.jpg" alt="Olives">
+                    <figcaption>Olives Flowers</figcaption>
+                </figure>
+                <figure> <img src="images/print-05.jpg" alt="Green">
+                    <figcaption>Green Leaves</figcaption>
+                </figure>
+                <figure> <img src="images/print-06.jpg" alt="Spring">
+                    <figcaption>Spring Flowers</figcaption>
+                </figure>
+                <!-- for learning: We removed the div.clear-div to try another solution:
+                <div class="clear-div">
+
+                </div>
+                -->
+            </div><!-- end div.samples -->
+
+
+            <div class="samples">
+                <h3>Animation Design</h3>
+                <!-- 
+place each image inside figure element
+figure is a block level element so all the images will be placed vertically
+-->
+                <figure>
+                    <a href="https://anmarjarjees.github.io/HTML-assignment/" title="open the website" target="_blank">
+                        <img src="images/print-01.jpg" alt="Sunflowers">
+                    </a>
+                    <figcaption><a href="https://github.com/anmarjarjees/HTML-assignment" title="read my code"
+                            target="_blank">Sunflowers</a></figcaption>
+                </figure>
+                <figure> <img src="images/print-02.jpg" alt="Nice">
+                    <figcaption>Nice Flower</figcaption>
+                </figure>
+                <figure> <img src="images/print-03.jpg" alt="Roses">
+                    <figcaption>Roses</figcaption>
+                </figure>
+                <figure> <img src="images/print-04.jpg" alt="Olives">
+                    <figcaption>Olives Flowers</figcaption>
+                </figure>
+                <figure> <img src="images/print-05.jpg" alt="Green">
+                    <figcaption>Green Leaves</figcaption>
+                </figure>
+                <figure> <img src="images/print-06.jpg" alt="Spring">
+                    <figcaption>Spring Flowers</figcaption>
+                </figure>
+            </div><!-- end div.samples -->
+        </main>
+
+        <footer>Copyright &copy; 2021 - My Portfolio - HTML-CSS Module</footer>
+    </div>
+</body>
+
+</html>

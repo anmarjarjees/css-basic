@@ -1,0 +1,95 @@
+/* This file is just for styling the main navigation - The basic */
+nav {
+    background-color: #4E4545;
+    color: #E8E3E3; /* Will not affect the links because they are blue by default */
+    
+    /* 
+    to make the nav element fixed not moving with other element
+    when we scroll the page 
+    */
+    position: fixed;
+    /*
+        position property has 4 major options:
+        - static ==> the default (the normal flow)
+        - relative ==> based on its current position
+        - absolute ==> based on its parent relative element
+        - fixed ==> fixed on its position (doesn't move) based on the browser window
+        */
+        
+    /*
+	After adding position: fixed,
+	we do need to specify the width of the element 
+    otherwise the element width will be just based on its content	
+	*/
+    width: 1000px;/* based on the size of the div.wrapper or use the value 100% for RWD */
+
+    /* We can specify the top/left/right/bottom but no need */
+    top:0; /* Using top 0 to stick our nav at the top */
+    /* left: 5px; We DON'T to push it 5px from the view port */
+}
+
+/* style only the ul inside the nav NOT inside the aside */
+/* Style the unordered list element <ul> which is inside <nav> */
+nav ul {
+    list-style-type:none;
+    padding: 5px;
+}
+
+/* 
+We want our list items for the nav to be displayed horizontally
+li is a block level element, but we can make it inline element 
+*/
+nav ul li {
+    display: inline;
+    /* I like to make them capital */
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+
+/* 
+    Two major types of the keyword "Pseudo":
+
+    - Pseudo Elements: acts like an extra element in the code:
+    we will focus on these two Pseudo Elements rules
+    ::first-letter (The textbook uses one : but we should use :: now)
+    ::first-line
+  
+    - Pseudo Class: acts like an extra value for a class attribute
+    we use this class with a element:
+
+    The syntax: => a:Pseudo-Class
+
+    :link ==> the normal link inside <a> element
+    :visited ==> the visited or the clicked links
+    :hover ==> when we hover the mouse over the link
+    :active ==> when we click the link
+
+    They should appear in the following sequence
+    Link Visited Hover Active
+    LoVe HAte
+*/
+
+/* We will style our original links in the main nav: */
+nav a:link {
+    /* We don't want to have our links in the main nav with underlines */
+    text-decoration: none;
+    color:#E8E3E3;
+}
+
+nav a:visited{
+    color:#f2f3ca;
+}
+
+nav a:hover {
+    color: rgb(255, 255, 0);
+    border-bottom: 4px solid rgb(246, 247, 233);
+}
+
+nav a:active {
+    color: #d8f06c; 
+}
+
+/* adding our class current => for the current open page */
+.current {
+    border-bottom: 4px solid rgb(246, 247, 233);
+}

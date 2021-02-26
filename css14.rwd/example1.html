@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--	
+        First Step:
+        By default Mobile devices zoom out the page 
+        to make it all fit within the screen of our mobile devices. 
+        We need to disable this default feature:
+     -->
+    <!-- using meta element -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWD Part1</title>
+    <!-- RWD: Responsive Web Design -->
+    <!-- Internal Styles -->
+    <style>
+        /* 
+        Two main parts:
+        - Global Styles: the styles that we need for every device/view-port
+        - Specific Styles: the styles that we need for specific devices/view-ports
+        */
+
+
+        /* Global Styles for any device */
+        * {
+            margin: 0;
+        }
+
+        div.wrapper {
+            background-color: pink;
+            margin: auto;
+
+            /* width: 1000px; RWD!!!! fixed width! */
+            /* 
+            with RWD, we should not use fixed width for main division 
+            We will not use width, we will use max-width
+             */
+            max-width: 1000px;
+            /* OR: */
+            /* width: 90%; */
+        }
+
+        /* 
+        Give the main element a red background color
+        main element it the parent for these elements:
+        - aside 
+        - section
+        - aside
+        */
+        main {
+            background-color: red;
+            /* this red color is invisible because all margins are 0 */
+        }
+
+        /* 
+        Target the two aside elements inside the main element:
+        */
+        main aside {
+            background-color: yellow;
+        }
+
+        /* 
+        Target the section element inside the main element:
+        */
+        main section {
+            background-color: rgb(151, 206, 224);
+        }
+
+        footer {
+            background-color: lightgreen;
+            text-align: center;
+        }
+
+        /* 
+        Second step: using Media Queries (CSS3):
+        we always start with "Mobile first".
+
+        Specific (Customized) Styles for specific screen sizes 
+        Using "Media Queries": 
+
+        Two conditions for any screen size (device):
+            - only screen (not for printing)
+            - max-width or min-width or both	
+        
+        - Mobile devices
+        - Tablet devices
+        - Desktop/laptop
+
+        Google Devices:
+        iPhone4, 5: width 320px
+        iPhone6,7,8, x: width: 375px
+        GalaxyS5: width 360px
+        */
+
+        /* 
+        style (target) mobile devices [Small Screens] (First) 
+        */
+        @media only screen and (max-width: 415px) {
+
+            /* Set my rules for small mobile devices */
+            /*	for testing */
+            main section {
+                background-color: rgb(250, 211, 250);
+            }
+        }
+
+        /* end media mobile */
+
+
+        /* 
+        style tablet devices [Medium Screens] (without including mobile)
+        We put the minimum to be 416px 
+        as it's one pixel more than the max-width of the mobile screens
+        We specified the range size for tablet to be between 416px to 800px
+        */
+        @media only screen and (min-width: 416px) and (max-width: 800px) {
+            main section {
+                background-color: rgb(192, 235, 218);
+            }
+        }
+
+
+        /* 
+        style desktop [Normal/Large Screens] devices  
+        */
+        @media only screen and (min-width: 801px) {
+            /* for testing */
+
+            /* 
+            with large screens
+            we can display: 
+            the two aside elements (inside the main) 
+            plus the section (inside the main element) all in one line
+
+            We will use the same technique: floating options
+
+            100% => 2 aside elements + 1 section (both inside main element)
+            */
+
+            /* style main */
+            main {
+                overflow: hidden;
+                /* hidden or auto */
+            }
+
+            main section {
+                width: 60%;
+                /* display: inline-block; */
+                float: left;
+            }
+
+            main aside {
+                width: 20%;
+                /* 
+                20% for one aside, since we have two aside elements 
+                ==> 20% + 20% = 40% 
+                */
+                /* display: inline-block; */
+                float: left;
+            }
+
+
+        }
+
+        /* end media desktop */
+
+        /* style huge/big desktop [Extra Large Screens] devices (no need) */
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2>Green<span class="highlight">Start</span></h2>
+            <p>GreenStart Awareness In Action Always And All The Time</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="example1.html">Home</a></li>
+                <li><a href="#">Green events</a></li>
+                <li><a href="#">Green Travel</a></li>
+                <li><a href="#">Green Tips</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <aside class="sidebar1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab sapiente placeat quae sunt iste
+                    nemo,
+                    corporis, hic tempore ad enim? Itaque iure architecto libero alias aliquam nisi, dolores rerum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptates adipisci eum ipsam
+                    aspernatur,
+                    laborum culpa. Laudantium, aspernatur blanditiis a in quo. Ratione nam dolor suscipit totam
+                    veritatis
+                    ex. Et?</p>
+            </aside>
+
+            <section id="content">
+                <h1>Welcome to GreenSTart1</h1>
+                <article>
+                    <h2>Our Green Events</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A incidunt accusamus nam, excepturi,
+                        temporibus minus exercitationem veniam culpa pariatur. Repellendus dolorum facilis rem debitis
+                        ad.
+                        Eveniet maiores facere odio architecto.</p>
+                </article>
+                <article>
+                    <h2>Travel with GreenStart</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A incidunt accusamus nam, excepturi,
+                        temporibus minus exercitationem veniam culpa pariatur. Repellendus dolorum facilis rem debitis
+                        ad.
+                        Eveniet maiores facere odio architecto.</p>
+                </article>
+            </section>
+
+            <aside class="sidebar2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab sapiente placeat quae sunt iste
+                    nemo,
+                    corporis, hic tempore ad enim? Itaque iure architecto libero alias aliquam nisi, dolores rerum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptates adipisci eum ipsam
+                    aspernatur,
+                    laborum culpa. Laudantium, aspernatur blanditiis a in quo. Ratione nam dolor suscipit totam
+                    veritatis
+                    ex. Et?</p>
+            </aside>
+
+            <!-- One of the solution for fixing the floating issue -->
+            <!-- <div style="clear:both"></div> -->
+        </main>
+        <footer> &copy; 2021 GreenStart. All rights reserved. RWD Part 1</footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Rules</title>
+
+    <link rel="stylesheet" href="css/your-css-file.css">
+    <style>
+        /*
+        The specificity ranking from highest to lowest
+        Inline styles: 1, 0, 0, 0
+        IDs: 0, 1, 0, 0
+        classes, pseudo-classes, attributes: 0, 0, 1, 0
+        elements, pseudo-elements: 0, 0, 0, 1
+
+        NOTE: !important has 10000 points
+        */
+
+        body {
+            /* font-family: fantasy; */
+        }
+
+        /* this div is the main parent for all our elements */
+        div {
+            /* 
+            for adding a border:
+            the color, style, and width
+             */
+            /* 
+            border-width: 2px;
+            border-style: solid;
+            border-color: darkblue; 
+            */
+
+            /* 
+            instead of typing 3 lines for border,
+            we can use one line:
+            */
+            border: 2px solid darkblue;
+            text-decoration: underline sandybrown;
+            padding: 10px;
+            margin-left: 100px;
+        }
+
+        /* 
+        Example: The following rule: 
+        div p {} has the weight of 0,0,0,2 because it targets two elements.    
+        */
+        div p {
+            /* color: red; */
+        }
+
+        p {
+            /* This color blue style will never be used
+            because its weight is 1 point only */
+            color: blue;
+
+            /* 
+            Adding a border for each paragraph,
+            Let's use exactly the same border style of its parent element div
+             */
+            /* border: 2px solid darkblue; */
+
+            /* 
+            We can also have all p element that are children of div to 
+            inherit the border styles form their parent div element 
+            */
+            /* border: inherit; */
+        }
+
+        /* 
+Let's make any article inherits the border style from their parent "div" element
+ */
+        article {
+            border: inherit;
+            text-decoration: green wavy underline;
+        }
+
+
+        /* 
+        give a different color for every ol element:
+        */
+        ol {
+            color: sienna;
+        }
+
+        /* 
+        the div (the grandparent) = border => article (the parent) = border => p (the child)
+         */
+
+        /* We have two articles with class value of "main" */
+        .main {
+            background-color: lightgreen;
+            /* 
+            The p element inside the article.main (article class="main")
+            will inherit the following styles
+             */
+            font-weight: bold;
+            font-style: italic;
+            color: darkgreen;
+            /* give a unique border style for these two articles */
+            border: 2px dotted red;
+        }
+
+        /* 
+        This will overwrite the above code
+        because it comes after it.
+         */
+        .main {
+            background-color: beige;
+        }
+
+        /* We can create a new rule for styling the p element inside .main */
+        .main p {
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni possimus, reiciendis earum veritatis
+            consequatur
+            sequi! Dolorum magni, repellat accusamus et quam omnis adipisci! Inventore, laudantium assumenda eveniet
+            ullam
+            consequatur optio?</p>
+
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem enim accusamus excepturi nesciunt, omnis
+            incidunt quia quaerat repudiandae ut impedit ipsa eaque, consequatur maxime quae est delectus aperiam eius?
+            Incidunt!
+        </p>
+
+        <article class="main">
+            <h2>First Main Article</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis tempora, non ea cupiditate voluptatem
+                molestias nostrum animi esse maiores. Mollitia consectetur blanditiis totam adipisci, laborum corporis
+                perspiciatis at natus veniam?</p>
+            <figure>
+                <img src="no image" alt="Sorry, no image here!">
+                <figcaption>The caption for my image</figcaption>
+            </figure>
+
+            <ol>
+                <li>First Item</li>
+                <li>Second Item</li>
+                <li>Third Item</li>
+            </ol>
+        </article>
+
+
+        <article class="main">
+            <h2>Second Main Article</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam recusandae placeat nulla
+                velit
+                nesciunt nobis explicabo a! Eius, recusandae modi iste ipsa tenetur vel nobis nulla quam aut iusto.
+            </p>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </article>
+
+        <aside style="background-color: lightgoldenrodyellow;">
+            <h2>Hi there, I am the aside element</h2>
+            <p>
+                Here is the aside lorem: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti voluptatibus
+                deserunt libero aperiam excepturi alias architecto sapiente accusantium dolorum officia in aut possimus
+                consectetur, harum laboriosam id. Aliquid, doloremque reprehenderit.
+            </p>
+
+            <p style="letter-spacing: 5px; color:brown; font-weight: bold;">
+                I am the last paragraph that has an inline style!
+            </p>
+        </aside>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS General Look</title>
+    <!-- 
+        To review: In HTML we had XHTML 1, HTML 4, and now we have HTML5
+        
+        We have 3 versions (levels) of CSS:
+        - CSS Level 1 (all old/new browsers)
+        - CSS Level 2 (all old/new browsers) ==> still in use (works with all browsers)
+        - CSS Level 3 (Only for new browsers but Not all the rules work with all browsers)
+
+        CSS ==> Cascading Style Sheet
+
+        3 ways to apply the styles (inside the HTML File):
+        - External Styles (recommended 100%)
+        - Internal Styles
+        - Inline Styles
+
+        External Styles:
+        All style rules will be written in an external file (not in the same HTML file)
+        this external file will be .css, and this file must be connected to our html file
+        using <link> element inside the HTML <head> element.
+
+        Internal/Embedded Styles:
+        All style rules will be written inside the <head> element of our html file
+        in between <style> and </style>. 
+        
+        Inline Styles:
+        All style rules will be written as attributes for the html elements.
+    -->
+
+    <!-- 
+    External CSS: Just to place our CSS rules in a different file
+    the file name has .css extension
+    DO NOT FORGET to link our HTML and CSS file together
+
+    type="text/css" was mandatory before HTML5 (it's optional with HTML5)
+    rel="stylesheet" is mandatory (The CSS will not work without it)
+
+    With W3C Validator:
+    We used to have this warning: The type attribute for the style element is not needed and should be omitted.
+
+    Remember that you DON'T have to add this attribute: type="text/css"
+    -->
+    <link href="css/my-styles.css" rel="stylesheet" type="text/css">
+
+    <!-- 
+    Internal or Embedded Styles (CSS)
+    type="text/css"
+    This attribute is optional and defaults to text/css if it is not specified
+
+    W3C Validator:
+    Warning: The type attribute for the style element is not needed and should be omitted.
+
+   -->
+    <!-- <style type="text/css"> -->
+
+    <style>
+        /* I am a CSS Comment :-) */
+
+        /*
+        selector {
+                declaration ==> property: value;
+            }
+
+            example of selector:
+            could be ==> id, class, html element (p, h1, h2, ul, etc...)
+        */
+
+
+        /* 
+            We want to reset the margins for all the elements to be 0
+
+            instead of listing all the elements that have margins by default:
+            h1,h2,h3,h4,p,ul,ol,li, etc..
+
+            We can just the symbol of * to target all the element
+            If you want to target all the elements: * for everything
+
+
+         */
+
+        * {
+            /* 
+            setting the margin to be 0 for all the 4 sides:
+            the margin from top to be 0:
+            the margin from bottom to be 0:
+            the margin from left to be 0:
+            the margin from right to be 0:
+            */
+            margin-top: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+
+            /* 
+            Instead of writing 4 lines,
+            we can summarize these into one line:
+
+            using just "margin" with the value of 0 for all sides
+            */
+            margin: 0;
+
+            /* 
+            padding has the same rules like margin:
+
+            The four sides:
+            padding-top;
+            padding-right;
+            padding-bottom;
+            padding-left;
+
+            the shorthand:
+            padding: value; this value will be for all the sides
+            */
+            padding: 0;
+        }
+
+        body {
+            /* 
+            I want to apply a background color of light coral to the body element.
+            NOTICE this rule will override the rule in the external file
+            */
+            background-color: lightcoral;
+        }
+
+        /* 
+        Changing h1, h2, and p elements to have a "darkgreen" text color 
+        Notice that below, we have 3 selectors that have exactly 
+        the same property and value,
+        instead of creating 3 rules! we can just group them in one rule:
+
+        NOTE: 
+        this rule will be useless, we SHOULD delete it (keep it for learning)
+        we are changing the colors after
+        */
+
+        h1,
+        h2,
+        p {
+            /* color: darkgreen; */
+        }
+
+        /* h1 {
+            color: navy;
+        }
+
+        h2 {
+            color: navy;
+        }
+
+        p {
+            color: navy;
+        } */
+
+        /* 
+    Let's try to target all the text to have "dark blue":
+
+    This way is REALLY "bad":
+    */
+        h1,
+        h2,
+        h3,
+        h4,
+        p,
+        ul,
+        ol,
+        dl,
+        table {
+            /* color: darkred; */
+        }
+
+        /* 
+        instead of calling all our elements that contains text 
+        to make their text color to be blue!! 
+
+        We can just target their main parent element and make the text blue,
+        then all the children will inherit the blue color.
+
+        What's the main major element that contains all the children
+        */
+
+        /* 
+        "Specificity" is very important concepts
+        Each selector has a number of points that set by CSS rules
+
+        The selector "Any HTML Element" specificity is: 1
+
+        NOTE: Please DO NOT duplicate the selector:
+        we have written the body element twice! We really should combine them to one
+        */
+        body {
+            color: darkblue;
+        }
+
+        /* 
+        style/target all or any em element
+        em element => make it's text to be italic
+
+        - bold text
+        - red color
+        - any background color
+        */
+        em {
+            font-weight: bold;
+            color: red;
+            /* 
+            instead of typing background-color 
+            we can use the shorthand property "background: ;"
+            */
+            background: bisque;
+        }
+
+        /* 
+        I want to style the main div that has class="wrapper"
+
+        The class symbol is .  
+
+        The specificity of a "class" is: 10
+        */
+        .wrapper {
+            /* give it a fixed width of 1200px */
+            background-color: beige;
+            /* or: */
+            background: lightyellow;
+
+            width: 2250px;
+
+            /*
+            margin-top: 10px;
+            margin-right: 100px;
+            margin-bottom: 5px;
+            margin-left: 90px; 
+            */
+
+            /* 
+            NOTE:
+            Even if we have different value for each side (top, bottom, left, right)
+            we can still use the shorthand!
+            
+            margin: value1 value2 value3 value4;
+            Thinking about a clock moving clockwise starting from the top: 12 -> 3 -> 6 -> 9
+            The same with margin:
+            value1: the top margin
+            value2: the right margin
+            value3: the bottom margin
+            value4: the left margin 
+
+            margin: Top-Value Right-Value Bottom-Value Left-Value;           
+            */
+
+            margin: 10px;
+            /* all the sides to be 10px */
+            margin: 10px 100px 5px 90px;
+        }
+
+
+        /* Let's  add same border for both ul and ol  */
+        ul,
+        ol {
+            /* 
+            border requires these option:
+            - width (size)
+            - style (slid line, dotted, dashed, etc...)
+            - color
+             */
+            border-width: 3px;
+            border-style: groove;
+            border-color: maroon;
+            /* 
+            instead of using 3 lines! we can use the shorthand
+             */
+            border: 3px groove maroon;
+            /* margin-left: 30px; */
+            padding-left: 30px;
+        }
+
+        /* 
+        I want to style the text of the body's child element named "aside"
+        to have a different color 
+
+        style the text inside the element "aside"
+         */
+        aside {
+            color: darkred;
+        }
+
+        /* 
+        Notice that the following rule/style will override the pervious one!
+        So the previous one will be useless (we should remove it)
+        */
+        aside {
+            color: darkgreen;
+        }
+
+        /* target/style all the articles */
+        article {
+            color: darkslateblue;
+            background-color: lightsteelblue;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 5px;
+            padding-left: 5px;
+            /* 
+            Or put them all in one rule using the shorthand: 
+            Make sure to use one set of rules
+            */
+            padding: 8px;
+
+            /* Adding 5px margin from the bottom for all the articles */
+            margin-bottom: 5px;
+        }
+
+        header {
+            text-transform: uppercase;
+        }
+
+        /* style the footer element */
+        footer {
+            background-color: lightseagreen;
+        }
+
+        /* 
+        A class selector matches the target
+		HTML class name is prefixed with a "."
+		The match is case sensitive.
+		Element classes are separated by white-space
+    
+        I don't want to style all my articles: !
+        I want to style all/any element(s) that have a class value of "pc"
+        class="pc" 
+        */
+        .pc {
+            border-width: medium;
+            border-color: darkorange;
+            border-style: groove;
+        }
+
+        /* 
+        we want to style/target only the element that has id="mac"
+        the article for Josy
+
+        Notice: the specificity of id is 100 points
+        */
+        #mac {
+            border-width: medium;
+            border-color: mediumvioletred;
+            border-style: ridge;
+            background: darkturquoise;
+        }
+
+        /* 
+        again, targeting the same article for Josy, 
+        using the class value of "mac-os"
+        */
+        .mac-os {
+            /* 
+            Notice that this background will not take any affect,
+            because the selector specificity of class ".mac-os" is only 10 points
+            */
+            background: darkred;
+        }
+
+        /* 
+        Descendant Selector:
+        I want style the ul list items for our modules "IT Programs" to be:
+            - Italic
+            - any different shading of font and background colors
+        
+        Notice that this ul element that is inside an article with id value of "first-article"!!!
+        so in such case, I can ask my browser to style 
+        the ul element which is inside an article element with id "first-article"
+
+        VScode Total => 102
+        
+        Our selector: article#first-article ul
+        - article [HTML element]=> 1
+        - #first-article [ID]=> 100
+        - ul [HTML element]=> 1
+
+        Total of; 1 + 100 + 1 => 102
+        */
+
+        article#first-article ul {
+            font-style: italic;
+            background: lightgreen;
+            color: darkgreen;
+        }
+
+        /*
+        Now let's try to style/target all the ul elements with:
+        background: dark shading
+        color: light color 
+        */
+        ul {
+            background-color: dimgray;
+            /* Notice important worths 10000 points based on the table of specificity */
+            /* background-color: dimgray !important; */
+            color: yellow;
+        }
+
+        /* 
+        Target every h2 inside every article 
+
+        NOT all h2 elements! Only the h2 that is a child/inside article element
+
+        using a comma below: two separate selectors
+        using a space below: all will become one selector
+
+        The comma/space will affect the value of the specificity 
+        with comma, each selector will have its value
+        with space, we need to find the total of their points
+
+        the points total will be: 2
+        article [HTML Element] => 1 + h2 [HTML Element] =>1 = 2
+        */
+        article h2 {
+            background-color: sandybrown;
+        }
+
+        /* 
+        Style any element with geography class 
+
+        Two elements have the geography:
+        - h2 
+        - p 
+        */
+        .geography {
+            /*  Make the text to be "Uppercase" */
+            text-transform: uppercase;
+        }
+
+        /* Style the figure */
+        figure {
+            border: 3px dotted darkred;
+        }
+
+        figcaption {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* 
+        Making all the images responsive
+        We need to set the width value to %
+        */
+        img {
+            /* The image width will be changed based on its container */
+            width: 100%;
+        }
+
+        /* 
+        Give the font family type of "Tahoma" to any element with class value of "sports"
+        */
+        .sports {
+            font-family: tahoma;
+        }
+
+        /* 
+        we want to target the div elements inside the section with id value of "compare"
+        section#compare
+
+        - make the two divs (front end and back end) to be displayed horizontally:
+        we need to make override their default setting to make them inline element
+        display: inline
+        */
+
+        section#compare {
+            width: 1004px;
+            background-color: lightskyblue;
+        }
+
+        /* 
+        To make the content clear, we just removed the borders from the ul elements
+        */
+        section#compare div ul {
+            border: none;
+        }
+
+        /* 
+        Change the 2 div elements inside a section with id value of "compare"
+
+        display: inline => we can't specify the width or height
+        */
+        section#compare div {
+            background-color: lightpink;
+            display: inline-block;
+            /* 
+            NOTE: with display: inline;
+            the width and the height will become useless
+
+            but with display: inline-block;
+            the element will become inline but we can set its width and height
+
+            W3Schools: https://www.w3schools.com/css/css_inline-block.asp
+            */
+            width: 500px;
+            height: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 
+        All div, New HTML5 semantic elements have no margins by default
+     -->
+    <div class="wrapper">
+        <header>
+            <h1>CSS General Look</h1>
+            <h2>Quick Introduction</h2>
+            <nav id="main-nav">
+                <ul>
+                    <!-- 
+                        href="#" ==> will just refresh the page
+                     -->
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <img src="images/pc.jpg" alt="Banner Image">
+        </header>
+
+        <main class="content">
+            <article id="first-article">
+                <h2>About CBC</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                    quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                    autem perferendis rem minima. Reprehenderit!
+                </p>
+                <!-- 
+                    Style the following paragraph using "Inline Styles".
+                    Inline style uses HTML attribute named "style"
+                    You add your style declarations to a HTML element’s style attribute
+                    style=" declaration(s) "
+                 -->
+                <h2 style="background-color: darkblue; color:lightcyan">IT Programmes</h2>
+                <ul class="it-list" id="it-programs">
+                    <li>SW Eng.</li>
+                    <li>Database Admin.</li>
+                    <li>Network Admin</li>
+                    <li>FSSD</li>
+                </ul>
+                <p style="background-color:maroon; color:darkorange">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quaerat iure possimus vel, et optio,
+                    ipsam quae laudantium culpa exercitationem qui labore consequatur asperiores, impedit corporis vitae
+                    itaque laboriosam odio!
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>Ken's computer</h2>
+                <p>
+                    Ken's computer, Lorem ipsum dolor sit amet consectetur <em>adipisicing</em> elit. Id saepe
+                    reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+
+            <article class="pc">
+                <h2>Moh's computer</h2>
+                <p>
+                    Moh's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod <em>similique</em>
+                    beatae,
+                    quis
+                    eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>Dar's computer</h2>
+                <p>
+                    Dar's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod <em>similique</em>
+                    beatae,
+                    quis
+                    eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>Vik's computer</h2>
+                <p>
+                    Vik's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod <em>similique</em>
+                    beatae,
+                    quis
+                    eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <!-- 
+                Only Josy is using Mac
+                Any element can have id and class attributes
+                - one id value only
+                - multiple class values
+             -->
+            <article id="mac" class="mac-os">
+                <h2>Josy's computer</h2>
+                <p>
+                    Josy's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod <em>similique</em>
+                    beatae,
+                    quis
+                    eaque dolore tenetur omnis.
+                </p>
+
+                <ul>
+                    <li>CPU: Intel i5</li>
+                    <li>Ram: 12 GB</li>
+                    <li>HDD: 1T</li>
+                    <li>Mac OS</li>
+                    <li>Monitor: 15.3"</li>
+                </ul>
+            </article>
+
+
+            <article>
+                <h2>About FSSD</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                    quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                    autem perferendis rem minima. Reprehenderit!</p>
+                <h2>Program Modules</h2>
+                <ol>
+                    <li>HTML and CSS</li>
+                    <li>Bootstrap Framework</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>Databases</li>
+                </ol>
+
+                <h2>Prorgramming Languages</h2>
+                <ul id="special-ul">
+                    <li>Client-Side Languages</li>
+                    <li>Sever-Side Languages</li>
+                </ul>
+            </article>
+
+            <article>
+                <!-- Element can have multiple classes but it can only have one id value -->
+                <h2 class="sports geography">Political News</h2>
+                <p class="geography">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, sed.</p>
+            </article>
+
+            <section id="compare">
+                <!-- 
+                    Don't forget that div is a block level element
+                 -->
+                <div>
+                    <h2>Front-End Developement</h2>
+                    <ul>
+                        <li>Client-Side Languages:
+                            <ul>
+                                <li>HTML*</li>
+                                <li>CSS*</li>
+                                <li>JavaScript*</li>
+                            </ul>
+                        </li>
+
+                        <li>Clinet-Side Frameworks
+                            <ul>
+                                <li>Bootstrap*</li>
+                                <li>React</li>
+                                <li>AngularJS</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Back-End Developement</h2>
+                    <ul>
+                        <li>Server-Side Languages:
+                            <ul>
+                                <li>PHP</li>
+                                <li>Python*</li>
+                                <li>C#</li>
+                            </ul>
+                        </li>
+                        <li>Client-Side Frameworks:
+                            <ul>
+                                <li>Laravel</li>
+                                <li>Flask and Django*</li>
+                                <li>ASP.NET</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <aside>
+            <h3>I am a lucky aside element!</h3>
+            <p>
+                I am aside element! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <span style="font-weight: bold; font-style: italic;">Ducimus quia odio</span>,
+                ipsum, nam, aut sit tempore cumque omnis culpa voluptate optio asperiores fugiat. Maiores hic eum
+                neque, totam quas numquam?
+            </p>
+
+            <figure>
+                <img src="images/apple.jpg" alt="Apple with books and ABC">
+                <figcaption>ABC Advanced School</figcaption>
+            </figure>
+        </aside>
+
+        <footer>
+            Copyright 2021 - Learning CSS - Canadian Business College
+        </footer>
+    </div>
+</body>
+
+</html>

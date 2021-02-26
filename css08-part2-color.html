@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 More Demo</title>
+    <style>
+        /*
+        Body ElementL
+        - adding margin of 0 for all the sides
+        - Font Family of Sans-serif
+        - background image:
+            -- background-image:
+            -- background:
+        */
+        body {
+            margin: 0;
+            font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+            background: url(images/pc.jpg);
+            /* 
+            in our assignment, 
+            we have the CSS rules inside CSS File inside CSS Folder
+            
+            First: The location for my styles:
+            Root Folder => CSS Folder => CSS File: background url(....)
+
+            Second: The location for my image:
+            Root Folder => assets => images => dark-wood1.jpg
+
+            The url() value will have the following sequence:
+
+            Step1: you will need to go outside the CSS folder to the root folder
+            ../ => to go outside on level above
+
+            Step2:
+            going to the assets folder assets/
+
+            Step3:
+            going to the images folder images/
+
+            Step4:
+            grab the wanted background image file
+            */
+        }
+
+        div.container {
+            width: 700px;
+            /*		
+            CSS2:
+            Color names (X Not Recommended)		
+            Hex Values
+            RGB Values
+            ------------
+            CSS3:
+            RGBa 
+            HSL
+            HSLa
+            */
+
+            /* background-color: rgb(186, 189, 229); */
+            background-color: rgba(186, 189, 229, .5);
+            /* a for alpha: min 0 to max 1 */
+
+            /* 
+            Using margin auto to let browser find the margin automatically 
+
+            To centre any block-level we can set the margin of left/right to auto
+            */
+            margin-top: 5px;
+            margin-right: auto;
+            margin-bottom: 3px;
+            margin-left: auto;
+
+            /* Or using the shorthand: */
+            margin: 5px auto 3px auto;
+
+
+            /* auto from top, left, bottom, and right */
+            /* margin: auto; */
+        }
+
+        h1 {
+            /* the default size for normal paragraph is 100% */
+            font-size: 350%;
+            line-height: 1em;
+            /* equal to Capital Letter M */
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            /*	padding: 10px; will override the top and bottom padding */
+            color: #0A165B;
+        }
+
+        h2 {
+            font-size: 220%;
+            color: #F0B0B1;
+            background-color: #740204;
+            border: 2px solid #BD800C;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            width: 90%;
+            margin: auto;
+            text-align: center;
+            /* 
+            CSS3:
+            */
+            border-radius: 20px;
+        }
+
+        /* text shadow */
+        header h1 {
+            text-shadow: 6px 6px 3px red;
+        }
+
+        /* 
+        For fun, let's try to practice the CSS3 Columns options
+        */
+        div.columns {
+            width: 90%;
+            background: rgba(225, 207, 114, .5);
+            column-count: 3;
+            column-gap: 25px;
+            margin: auto;
+            text-align: justify;
+            /* 
+            To make sure that this CSS3 will work with any browser:
+            */
+            border-radius: 0px 100px 25px 75px;
+            -webkit-border-radius: 0px 100px 25px 75px;
+            -moz-border-radius: 0px 100px 25px 75px;
+            padding: 30px;
+        }
+
+        footer {
+            /* background-color: hsla(84, 66%, 34%, 0.4); */
+            /* beside using background-color we can use: */
+            background: hsla(84, 66%, 34%, 0.4);
+            padding: 10px 0;
+            font-size: 120%;
+
+            /*	
+            style the text inside the footer 
+            */
+            -webkit-text-stroke-color: yellow;
+            -moz-text-stroke-color: yellow;
+
+            -webkit-text-stroke-width: 1px;
+            -moz-text-stroke-width: 1px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Adobe Dreamweaver</h1>
+            <h2>Learning more about creating website</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <!-- Task: about.html -->
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="content">
+            <h1>Rounded Corners</h1>
+            <h2>Welcome to Dreamweaver</h2>
+            <p>Here is my first paragraph about how to work with Adobe Dreamweaver. Notice that all Adobe applications
+                have the letters "CC" at the end of their names which stands for "Creative Cloud".</p>
+            <div class="columns">
+                <h2>Creating Multi-Column Layouts</h2>
+                <p>1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat quasi, facilis ullam non
+                    assumenda, laborum neque quas alias tenetur optio repellat beatae officiis culpa unde doloribus nam
+                    tempora nulla eaque.</p>
+
+                <p>2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, deleniti dolores praesentium.
+                    Dolorem id atque, voluptates quia ipsam, cupiditate facilis dolor at vero magni unde labore.
+                    Nesciunt velit, rem soluta.</p>
+
+                <p>3. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti delectus placeat id. Excepturi
+                    officiis architecto iure, alias fugit recusandae asperiores delectus minima, quas culpa, placeat
+                    praesentium eius eveniet tempore aperiam.</p>
+
+                <p>4. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis neque totam, accusantium iste
+                    incidunt, aliquid et culpa? Magni molestias consequatur quos iste eligendi, commodi eaque nobis
+                    obcaecati ex asperiores quisquam!</p>
+            </div>
+        </section>
+        <footer>CSS # Colors and Borders Demo</footer>
+    </div>
+</body>
+
+</html>

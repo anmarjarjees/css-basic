@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors and Text Options</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            /* 
+            4 ways to apply colors:
+            - color names (X) maximum 147 names (color) <= Not recommended 
+              Example: like red, blue, etc... 
+            
+
+            - Hexadecimal (Hex) #4576af
+            - RGB (Red Green Blue) ==> (CSS3: RGBa)*
+            - HSL (Hue Saturation Lightness) ==> (CSS3: HSLa)*
+
+            *a stands for alpha (for set the transparency value)
+            */
+        }
+
+        /* copy the same styles as before */
+        .container {
+            width: 1000px;
+            /* Non need to specify the height only with same special cases */
+            /* height: 300px; */
+            border: 1px solid rgb(102, 49, 49);
+        }
+
+        article {
+            padding: 0.2em;
+        }
+
+        /* 
+          style the element that has id="first" and the element that has id="second" 
+         */
+        #first,
+        #second {
+            /*
+            1. Hex (Hexadecimal) Code 
+            #rrggbb ==> red, green, and blue 
+            Hexadecimal values can be made of a combination containing:
+            - numbers between 0 and 9, 
+            - and letters between a and f
+
+            #000000 is the lowest hexadecimal value available and will be black, 
+            whereas #ffffff is the highest value available, and is white
+            */
+
+            /* background-color: darkblue; */
+            background-color: rgb(17, 43, 112);
+            /* color: white */
+            color: #fff;
+            /* instead of typing #ffffff => we can just type #fff */
+        }
+
+        /* 
+          style the element that has id="third" and the element that has id="forth" 
+         */
+        #third,
+        #forth {
+            /* Or rgb value :
+            using: rgb(value1,value2,value3) 
+            value1 ==> r for red
+            value2 ==> g for green
+            value3 ==> b for blue
+            value(s) == from 0 to 255
+            r: red
+            g: green
+            b: blue 
+            The numbers have to be between 0 and 255
+            min ==> 0 => "Blak"
+            max ==> 255 => "white"
+            */
+            background-color: darkred;
+            color: rgb(255, 255, 255);
+        }
+
+        /* 
+        style the aside element using HSL:
+        */
+        aside {
+            /* 
+            Using the CSS3: HSL 
+            hsl(hue, saturation, lightness)
+            
+            H: Hue ==> value (0 - 360) as an angle
+            S: Saturation ==> value (0 to 100%) as percentage
+            L: Lightness ==> (0 to 100%) as percentage
+            */
+            background-color: darkslategrey;
+            color: hsl(0, 0%, 100%)
+        }
+
+        footer {
+            /*
+        Text align is controlled by two CSS properties: 
+        - text-align 
+        - vertical-align
+
+        It aligns content horizontally and vertically
+        */
+            text-align: center;
+            background-color: lightskyblue;
+
+            /* 
+        you can check the vertical alignment topic:
+        https://www.w3schools.com/cssref/pr_pos_vertical-align.asp
+        */
+
+            /*
+            text-shadow: to create a drop-down shadow
+            it belongs to CSS3 (CSS level 3)
+
+            text-shadow: length1 length2 length3 color;
+
+            length1 ==> how far to the left or right
+                positive values for going right
+                negative values for going left
+
+            length2 ==> the distance to the top or bottom
+                positive values for going down
+                negative values for going up
+                
+            length3 ==> (optional) the amount of blur (default value is 0 which means no blur)
+            */
+            text-shadow: 1px 2px 2px red;
+        }
+
+        em {
+            /* supper, middle, sub, etc... */
+            vertical-align: super;
+            background: darkgoldenrod;
+        }
+
+        span {
+            vertical-align: sub;
+            background: lightseagreen;
+        }
+
+        aside {
+            /* Using the value: normal, it will keep the default browser styling. */
+            word-spacing: 12px;
+
+            /* Letter Spacing: It controls the spacing between the letters */
+            letter-spacing: 5px;
+        }
+
+        /* 
+        style any element with class value of "box2":
+        - width => 100px
+        - a border with any color width and style
+        */
+        .box2 {
+            width: 100px;
+            border: 1px solid #000;
+        }
+
+        /* 
+        How many points does this selector have (The specificity)? 
+        you can check my table in HTML-CSS notes:
+        element => 1
+        class => 10
+
+        The total is: 11 points
+        
+         */
+        .box2 p {
+            /*  It tells the browser whether text lines can break if they are longer than their container */
+            word-wrap: break-word;
+        }
+
+        .box1 {
+            width: 350px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        .box1 p {
+            /* 
+            It breaks all words even those that would normally stay on the same line
+            You use it by setting the value to the word-break property. 
+            It can be break-all, keep-all or normal            
+             */
+            word-break: break-all;
+            /* Notice here we can ignore the ; at the end it's my last declaration */
+        }
+
+        .lms {
+            border: 1px solid rgb(3, 104, 79);
+            margin-bottom: 10px;
+            /* We can use text-transform to capitalize our text, or make it upper/lowercase:
+            - capitalize => Each word is capitalized (Not every letter, just the first letter of each word)
+            - lowercase => All the letters is lowercase
+            - uppercase => All the letters is uppercase
+             */
+            text-transform: uppercase;
+
+        }
+
+        .container-small {
+            width: 150px;
+        }
+
+        /* 
+            White Space: It handles the white space within the element
+            You can use it by setting one of these values for the white-space property: 
+            pre-wrap, nowrap, pre and pre-line
+        */
+
+        .nowrap {
+            white-space: nowrap;
+        }
+
+        .pre {
+            white-space: pre;
+        }
+
+        .prewrap {
+            white-space: pre-wrap;
+        }
+
+        .preline {
+            white-space: pre-line;
+        }
+
+
+        /* target any anchor element to remove the default underline: */
+        a {
+            text-decoration: none;
+        }
+
+        /* 
+        Target "agin" the classes .box1 and .box2 !!!
+
+        NOTE: We should repeat the selector
+         */
+        .box1 {
+            /*
+                text-decoration:
+                You can use it by setting 
+                - underline
+                - overline
+                - line-through
+                - none 
+                as a value to the text-decoration property
+            */
+            text-decoration: line-through;
+        }
+
+        .box2 {
+            /*
+                font-style: 
+                You can use it by setting the font-style value to italic or normal
+            */
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2><a href="#">Canadian Business College</a></h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni possimus, reiciendis earum veritatis
+            consequatur
+            sequi! Dolorum magni, repellat accusamus et quam omnis adipisci! Inventore, laudantium assumenda eveniet
+            ullam
+            consequatur optio?</p>
+
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem enim accusamus excepturi nesciunt, omnis
+            incidunt quia quaerat repudiandae ut impedit ipsa eaque, consequatur maxime quae est delectus aperiam eius?
+            Incidunt!
+        </p>
+
+        <article class="main" id="first">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis tempora, non ea cupiditate voluptatem
+                molestias nostrum animi esse maiores. Mollitia consectetur blanditiis totam adipisci, laborum corporis
+                perspiciatis at natus veniam?</p>
+        </article>
+
+
+        <article class="main" id="second">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam recusandae placeat nulla
+                velit
+                nesciunt nobis explicabo a! Eius, recusandae modi iste ipsa tenetur vel nobis nulla quam aut iusto.
+            </p>
+        </article>
+
+        <article class="main" id="third">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam recusandae placeat nulla
+                velit
+                nesciunt nobis explicabo a! Eius, recusandae modi iste ipsa tenetur vel nobis nulla quam aut iusto.
+            </p>
+        </article>
+
+        <article class="main" id="forth">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam recusandae placeat nulla
+                velit
+                nesciunt nobis explicabo a! Eius, recusandae modi iste ipsa tenetur vel nobis nulla quam aut iusto.
+            </p>
+        </article>
+
+        <!-- This box will be have a height and width of
+  30% of the window's width.
+  Try to resize the browser horizontally 
+  to see how the box adjusts to
+  the viewport. -->
+        <div class="box1">
+            <p>Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in
+                the embed code for the video you want to add. You can also type a keyword to search online for the video
+                that best fits your document.</p>
+            <p>
+                To make your document look professionally produced, Word provides header, footer, cover page, and text
+                box designs that complement each other. For example, you can add a matching cover page, header, and
+                sidebar. Click Insert and then choose the elements you want from the different galleries.
+            </p>
+        </div>
+
+        <!-- This box will be wide and
+  high 10% of the window height. 
+  Try to resize the browser,
+  vertically, to see how the box adjusts -->
+        <div class="box2">
+            <!-- we will romve all the spaces for testing word-wrap -->
+            <p>thecontentforbox2tolearnhowtousewordwrap</p>
+        </div>
+
+        <aside>
+            <p>
+                Here is the aside lorem: <em>Lorem ipsum</em>. The Water symbol is H<span>2</span>O dolor sit, amet
+                consectetur adipisicing elit. Corrupti
+                voluptatibus
+                deserunt libero aperiam excepturi alias architecto sapiente accusantium dolorum officia in aut possimus
+                consectetur, harum laboriosam id. Aliquid, doloremque reprehenderit.
+            </p>
+        </aside>
+
+
+        <div class="lms container-small">
+            <p class="nowrap">Nowrap doesn't allow text to wrap</p>
+        </div>
+
+        <div class="lms container-small">
+            <p class="preline">
+                Preline keeps the line break allowing words to wrap when necessary
+                and on line breaks. Whitespaces are ignored
+            </p>
+        </div>
+
+        <div class="lms">
+            <p class="pre">
+                Pre
+                keeps
+                the
+                white space
+
+
+
+
+
+                and line break. Text will wrap on the line break.
+                If we don't put the line break, text will be in one long line
+            </p>
+        </div>
+
+        <div class="lms container-small">
+            <p class="prewrap">
+                Prewrap keeps the white space
+                and line break. Text will wrap on the line break
+                and when necessary
+            </p>
+        </div>
+
+        <footer>
+            Copyright 2021 - Canadian Business College - HTML and CSS Module
+        </footer>
+    </div>
+</body>
+
+</html>

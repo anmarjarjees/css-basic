@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model-DOM</title>
+
+    <!-- Internal Styles -->
+    <style>
+        /* The descendant selector */
+        div span {
+            color: green;
+            background: wheat;
+        }
+
+
+        /* 
+        Style ONLY the DIRECT span children of the <div> element
+		to be colored with green color
+
+        Note: The selector specificity  
+        To learn more about specificity, 
+        please check my in-class notes for HTML and CSS
+        There is a table to show us the points for each selector type
+        */
+
+        div>span {
+            color: red;
+            background: wheat;
+        }
+
+        /* 
+        Style all span elements to have a blue color text
+         */
+        span {
+            color: blue;
+            background: lightseagreen;
+        }
+
+        /* 
+        Style any ul element(s) that are the direct child of div element 
+
+        the child is <ul> and its direct parent is <div>
+        */
+        div>ul {
+            background-color: lightyellow;
+        }
+
+        article p {
+            font-style: italic;
+            color: blue;
+        }
+
+        /* 
+        target the p element inside the element with id value of "#cbc" 
+        */
+        #cbc p {
+            font-weight: bold;
+            color: maroon;
+        }
+
+        /* 
+        style any p element which is inside article inside div!
+         */
+        div article p {
+            font-weight: normal;
+            color: black;
+        }
+
+        /* 
+        I want to force the browser to make all p elements red
+         */
+        p {
+            color: red !important;
+            /* important has 10000 points  */
+        }
+
+        /* 
+        style <a> element inside the list item of the ul for any div:
+        
+        This selects all anchors <a>
+        which have li element as an ancestor,
+        which have ul as an ancestor
+        which have div as an ancestor
+        */
+        div ul li a {
+            color: red;
+        }
+
+        /* CSS Sibling Selector */
+        /*  style any ul element that has a p element sibling  */
+        p~ul {
+            border-width: 2px;
+            border-style: ridge;
+            border-color: green;
+            /* the shorthand way: */
+            border: 2px ridge green;
+        }
+
+        /* 
+        Style any ul element that has a sibling of h2 element:
+         */
+        h2~ul {
+            border: 2px red inset;
+        }
+
+        /* 
+        Add a sibling selector to this css code declaration to target only the sibling paragraphs below the <h3> element. 
+        */
+        h3~p {
+            /* This color will not apply to any p element */
+            color: blue;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>CSS Types</h2>
+        <!-- Here is the first direct ul child of the main div: -->
+        <ul>
+            <li>External CSS: <span>More Recommended</span></li>
+            <li>Internal/Embedded CSS</li>
+            <li>Inline CSS</li>
+        </ul>
+        <!--  
+        This span with id="one" is nested after the <div> element.
+        This div is the closest parent of the <span> element
+         -->
+        <span id="one">
+            I am a direct child of the div element
+            <!-- Span with id="one" is the closest parent of the span with id="two" -->
+            <span id="two">
+                I am a direct child of the span, not div.
+            </span>
+        </span>
+
+        <br />
+        <!-- The div is the closest parent of this <span> element as well
+          -->
+        <span>I am also a direct child of the div element</span>
+
+        <article id="cbc">
+            <h3>About CBC</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                autem perferendis rem minima. Reprehenderit!
+            </p>
+            <h3>IT Programmes</h3>
+            <ul>
+                <li>SW Eng.</li>
+                <li>Database Admin.</li>
+                <li>Network Admin</li>
+                <li><a href="https://canadianbusinesscollege.com/information-technology/full-stack-software-development/"
+                        target="_blank">FSSD</a></li>
+            </ul>
+            <!-- Inline style has 1000 Points -->
+            <p style="color:green">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem veniam voluptatem a illum ex qui
+                facere quam accusantium soluta nulla consequuntur doloremque porro architecto atque suscipit quia,
+                ducimus, unde maxime!
+            </p>
+            <span>
+                I am a child of the article element
+            </span>
+        </article>
+
+        <article>
+            <h2>About FSSD</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ipsum, minima ab aliquid qui unde
+                totam perferendis quaerat recusandae tempore ea sed id iste laudantium omnis laborum fuga saepe
+                adipisci?
+            </p>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem veniam voluptatem a illum ex qui
+                facere quam accusantium soluta nulla consequuntur doloremque porro architecto atque suscipit quia,
+                ducimus, unde maxime!
+            </p>
+        </article>
+
+        <h2>Front End</h2>
+        <!-- This ol is the direct child of the main div -->
+        <ol>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li><a href="https://www.w3schools.com/js/default.asp" target="_blank">JavaScript</a></li>
+        </ol>
+    </div>
+
+    <!-- 
+        Just for learning, we put this span by itself:
+     -->
+    <span>I am living outside the main div!</span>
+</body>
+
+</html>

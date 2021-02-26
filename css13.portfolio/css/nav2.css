@@ -1,0 +1,128 @@
+/* This file is just for styling the main navigation - The advanced version */
+/* using new CSS3 properties => display: flex and justify-content: space-around */
+
+/* Styling the main navigation */
+nav {
+    background-color: #4E4545;
+    color: #E8E3E3; /* Will not affect the links because they are blue by default */
+     
+    /* 
+    to make the nav element fixed not moving with other element
+    when we scroll the page 
+
+    position: fixed; without specify any pair of corners 
+    The default will be top/bottom => the same normal location (y-axis)
+    the default right/left => the same normal location (x-axis)
+    */
+    position: fixed;
+    width: 1000px;
+}
+
+/* style only the ul inside the nav NOT inside the aside */
+/* Style the unordered list element <ul> which is inside <nav> */
+nav ul {
+    /* Notice that by default the browser adds 40px padding to the ul element */
+    /* padding-left: 0; ==> NO NEED we did that with * */
+    list-style-type: none; /* remove the bullets */
+ 
+
+    /* This ul is the parent of the li for each page */
+    
+    /* 
+    Step 1: CSS3: display flex option:
+    this defines a flex container (ul is the direct container of li)	
+    all its children element will be flexible! li ==> inline
+    (It enables a flex context for all its direct children whether they are inline or block.)
+    */
+    display: flex;
+    /* step 2: use CSS3 property */
+    justify-content:space-evenly;
+    /* 
+    the contents of ul are list of li elements
+    */
+}
+
+/* 
+Reset any margin and padding that we added in the main styles file  
+to be 0
+for only the li of ul inside the nav
+*/
+nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* We will style our original links in the main nav: */
+nav a:link {
+    /* We don't want to have our links in the main nav with underlines */
+    text-decoration: none;
+    background-color: #D8D9D5;
+    color: #4E4545;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    /* 
+    Notice that <a> element are inline element
+    (inline element has no width, height, no margins) 
+
+    Notice that <a> element are inline element (has no width) 
+    so we need to make it block level element and keep them in horizontal layout 
+    so we need to use inline-block
+
+    We need to make each <a> element is block by itself to have a little space
+    and having the box shape to set width or padding 
+    */
+
+    /* We can use "inline-block" but no need it works with "block" */
+    display: block; 
+
+    /* Notice that using width attribute will be useless for any inline element */
+    width: 150px; 
+    text-align: center;
+    /* 
+    Each <a> box has four corners, 
+    we can use one value for all, or we can use 4 values for each one 
+    */
+    border-radius: 15px;
+
+    /* 3px top/bottom and 5px left and right */
+    padding: 3px 5px;
+}
+
+/* 
+Counting the total of specificity:
+- nav => 1
+- a => 1
+- :visited => 10
+Total = 12 points
+*/
+nav a:visited{
+    color:#7e7e39;
+}
+
+nav a:hover {
+    color: rgb(255, 255, 0);
+}
+
+nav a:active {
+    color: #f503039d; 
+}
+
+/* 
+Styling the <a> element with class="current" inside the nav
+to refer to the current opened page.
+
+So to change the a element (link) for the current open page 
+Style (Target) any anchor tag inside <nav> element that has class="current"
+
+Counting the total of specificity:
+- nav => 1
+- a => 1
+- .current => 10
+Total = 12 points
+*/
+nav a.current {
+    background-color: #8a7d0e;
+    color: #fdfdfc;
+}

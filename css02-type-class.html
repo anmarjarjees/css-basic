@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID and Attribute Selectors</title>
+
+    <style>
+        form {
+            /* instead of using pixels, we will % to make responsive */
+            width: 70%;
+            background-color: cornsilk;
+        }
+
+
+        /* 
+        We will make all the inline elements for the form:
+        - label
+        - input
+
+        to be block-level
+        */
+        label,
+        input {
+            display: block;
+        }
+
+        /* 
+        We would like to add some gap below every input field (margin at the bottom)
+        */
+        input {
+            margin-bottom: 10px;
+            width: 98.3%;
+        }
+
+        /* 
+         Select the input element with "type attribute set to email":
+         target this element: <input type="email">
+         add a red border
+         */
+        input[type="email"] {
+            border: 2px solid red;
+        }
+
+        /* 
+         Select the input element with "type attribute set to url":
+         target this element: <input type="url">
+         add a blue border
+         */
+        input[type="url"] {
+            border: 2px solid blue;
+        }
+
+        /* Selects an input element with type attribute set to text */
+        input[type="text"] {
+            border: 2px dashed darkgoldenrod
+        }
+
+
+
+        /* OR: We can just use the id: */
+        input#url {
+            border: 2px dotted green;
+        }
+
+        /* 
+        Task: style the label element that has the attribute for with the value of "name"
+        Target <label> element with for="name"
+        */
+        label[for="name"] {
+            background-color: coral;
+        }
+
+
+        /* 
+        To practice more:
+        select any element that has => class="test"
+         */
+        [class="test"] {
+            background-color: deepskyblue;
+        }
+
+        /* 
+        Yes we can do with this easier and more official way:
+         */
+        .test {
+            background-color: lightgray;
+        }
+
+
+        /* 
+        Style any element that has a class attribute!!! 
+        We don't care about the class value
+         */
+        [class] {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="action_page.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Name" />
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="Email" />
+
+        <label for="url">Website:</label>
+        <input type="url" name="url" id="url" placeholder="Website" />
+
+        <!-- Not completed Form -->
+    </form>
+
+    <p class="test">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nostrum ipsam similique mollitia repellendus
+        incidunt fuga molestias, quaerat eum voluptatum saepe dolorem consequuntur corrupti velit ducimus dicta
+        consequatur soluta distinctio.
+    </p>
+
+    <ul class="main-list">
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow</title>
+    <style>
+        /* 
+           styling the class .wrapper the main container
+           width + the background color
+        */
+
+        .wrapper {
+            width: 950px;
+            background-color: antiquewhite;
+            /* 
+            How can we center a block element horizontally?
+            Setting the value auto for the left and right margin 
+            will center any block level element. 
+            */
+            margin: auto;
+        }
+
+        /* style all the <article> elements */
+        article {
+            background-color: rgb(163, 163, 90);
+
+            /* 
+            margin: T R B L 
+            margin: value (T R B L )
+            */
+
+            /* margin: 15px auto 15px auto; */
+
+            /* 
+            Since the T = B and L = R
+            we can summarize the values:
+
+            margin: value1 value2;
+            value1 = the top and bottom margin
+            value2 = left and right
+            */
+            margin: 15px auto;
+
+            /* 
+            add first width = 800px and height = 130px 
+            */
+            width: 800px;
+            height: 130px;
+
+            padding: 7px;
+            /* top, right, bottom, left = 7px */
+
+            /*
+                The same rules for margin and padding
+
+                Add this padding: 7px 10px 7px 10px; 
+                since 
+                - the top padding = bottom padding
+                - the right padding = left padding
+
+                padding: value1 value2;
+                value1: top and bottom
+                value2: left and right
+            */
+            padding: 7px 10px;
+
+            /* 
+            overflow: to tell the browser what to do 
+            if the content is more than the size of its container
+            */
+            /* overflow: auto; */
+            /* overflow: hidden; */
+            /* overflow: scroll; */
+
+            /* 
+        NOTE: No need to use both x and y, just use one of them
+        and the browser will use the other one if needed
+        */
+            overflow-x: auto;
+            overflow-y: auto;
+            /* overflow-y: auto; */
+
+            /*
+        CSS allows us to control the vertical or the horizontal scrollbar with two properties.
+
+        overflow-x controls the horizontal scrollbar
+        overflow-y controls the vertical scrollbar
+        overflow-x and overflow-y have the same values as the overflow property:
+        - auto
+        - hidden
+        - visible
+        - scroll
+        */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- div.wrapper ==> to contain the entire page -->
+    <div class="wrapper">
+        <article>
+            <h2>Fender Mustang</h2>
+            <p>The Fender Mustang was introduced in 1964 as the basis of a major redesign of Fender's student models
+                then consisting of the Music master and Duo-Sonic. It was originally popular in sixties surf music and
+                attained cult status in the 1990s largely as a result of its use by a number of alternative rock bands.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo a, aliquid excepturi et ipsum sapiente
+                harum iusto sint laboriosam vero ea tempora sequi corporis in voluptates, iste reprehenderit velit
+                maxime?
+            </p>
+        </article>
+        <article>
+            <h2>Fender Stratocaster</h2>
+            <p>The Fender Stratocaster or "Strat" is one of the most popular electric guitars of all time, and its
+                design has been copied by many guitar makers. It was designed by Leo Fender, George Fullerton and Fredie
+                Tavares in 1954.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo a, aliquid excepturi et ipsum sapiente
+                harum iusto sint laboriosam vero ea tempora sequi corporis in voluptates, iste reprehenderit velit
+                maxime?
+            </p>
+        </article>
+        <article>
+            <h2>Gibson Les Paul</h2>
+            <p>The Gibson Les Paul is a solid body electric guitar that was first sold in 1952. The Les Paul was
+                designed by Ted McCarty in collaboration with popular guitarist Les Paul, whom Gibson enlisted to
+                endorse the new model. It is one of the most well-known electric guitar types in the world.</p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo a, aliquid excepturi et ipsum sapiente
+                harum iusto sint laboriosam vero ea tempora sequi corporis in voluptates, iste reprehenderit velit
+                maxime?
+            </p>
+        </article>
+        <article>
+            <h2>Random Title1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorum quos facilis praesentium vitae
+                beatae reprehenderit, laboriosam recusandae, ullam quasi exercitationem veniam tenetur officia et
+                dolorem ipsum ad asperiores similique!
+            </p>
+        </article>
+
+        <article>
+            <h2>Random Title2</h2>
+            <p>Loremipsumdolorsitamet,consecteturadipisicingelit.Istedolorumquosfacilispraesentiumvitaebeataereprehenderit,laboriosamrecusandae,ullamquasiexercitationem
+                veniam tenetur officia et
+                dolorem ipsum ad asperiores similique!
+            </p>
+        </article>
+    </div>
+</body>
+
+</html>

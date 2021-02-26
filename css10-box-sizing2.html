@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Sizing 2</title>
+    <style>
+        /* 
+        HTML5 offers some new elements, primarily for semantic purposes. 
+        The elements include:
+        section, article, aside, header, footer, nav, figure, figcaption, time, mark & main.
+
+        These elements don't work with old IE versions (not supported)
+        which means these elements will be displayed as inline elements with the old versions of IE
+        because IE can't recognize them as block-level element
+        */
+        section,
+        article,
+        aside,
+        header,
+        footer,
+        nav,
+        figure,
+        figcaption,
+        main {
+            display: block;
+        }
+
+        body {
+            background: url(images/pc.jpg) rgb(86, 94, 59);
+        }
+
+        div.wrapper {
+            /* 
+            Fixed size width
+            width: 1000px;
+
+            With RWD:
+            max-width: * more important 
+            min-width:
+            */
+
+            /* It's good to set a break point for the maximum width 1200px */
+            max-width: 1300px;
+
+            /* We can also set the minimum width if we like/need*/
+            min-width: 350px;
+
+            /* 
+            besides the max-width: any maximum value in pixel (px)
+            we can use width: but with ONLY any value in percentage (%)
+
+            Optional: we can skip the width of 100% because it's by default 
+            */
+            width: 85%;
+
+            background-color: rgb(253, 253, 243);
+            margin: auto;
+        }
+
+        header {
+            background-color: brown;
+        }
+
+        main {
+            background-color: rgb(124, 245, 204);
+            /* 
+            Width and height define the width and the height of an element 
+            without any padding or border taking into account. 
+            */
+            /* width: 800px; */
+            width: 60%;
+            /*  
+            With box-sizing of border-box 
+            => the width will include the padding and the border
+            */
+            box-sizing: border-box;
+            float: left;
+            padding: 10px;
+            border-left: 5px inset rgb(72, 112, 12);
+            border-right: 5px inset rgb(72, 112, 12);
+        }
+
+        aside {
+            background-color: rgb(248, 213, 238);
+            /* width: 200px; */
+            width: 20%;
+            float: left;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        footer {
+            background-color: rgb(167, 184, 233);
+            clear: both;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        /* for more practice about display inline */
+        #samples {
+            background: burlywood;
+        }
+
+        #samples div {
+            background: rgb(245, 241, 4);
+            display: inline-block;
+            /* 
+            since their container is 900px
+            900px / 3 div(s) => each div has 300px
+
+            but with display inline-block, the browser will add fex pixel gap
+            we found by testing that each one can have 297px to fit in one line
+            */
+            width: 289px;
+        }
+
+        /* for more practice about float options */
+        #items {
+            background: dodgerblue;
+        }
+
+        /* #items div Or we can use */
+        .item {
+            background: darkturquoise;
+            float: left;
+            /* 
+            since their container is 900px width
+            900px / 3 div(s) => each div has 300px
+            */
+            width: 300px;
+
+            /* 
+            After adding box-sizing property:
+            using the calculator with chrome tool computed feature
+            Chrome tools => the computed width => 875.018px
+            divide the value of  875.018px / 3 divs
+            */
+            width: 291.67px;
+        }
+
+        /* 
+        Styling my own element :-)
+        mytag is invalid, we can keep it just for fun
+         */
+        mytag {
+            /* 
+            The browser will treat my element "mytag" to be a block-level element like p element: 
+            W3C Validator - Error: Element mytag not allowed as child of element
+            */
+            display: block;
+        }
+
+
+        /* Adding more styles below for this part 2: */
+
+        /* to make all the images in my website responsive: */
+        img {
+            /* 
+            width: 100%; 
+            => The image will be resized up/down 
+            the image will be responsive and scale up and down:
+            ----------------------------------------------------
+            max-width: 100%; 
+            =>  the image will scale down if it has to, 
+            but never scale up to be larger than its original size:
+            */
+            max-width: 100%;
+            /* 
+            W3Schools Link: https://www.w3schools.com/html/html_responsive.asp
+             */
+
+            /* 
+            To add margin, width, or height for any inline element,
+            We need first to make block-level element
+            example with the img element:
+            */
+            display: block;
+            margin: auto;
+        }
+
+        /* 
+        Child Selector: 
+        Style the first child <span> element(s) of the main element
+        */
+        main>span {
+            background-color: rgb(245, 245, 198);
+            font-family: cursive;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: underline;
+            display: block;
+            /* 
+            width, height, and margin work only with block-level element
+
+            span is an inline element
+            with inline element all these properties:
+            width, height, margin will not work
+
+            because inline element can not have any size properties. 
+            */
+            width: 50%;
+            height: 100px;
+            margin: auto;
+        }
+
+        /* Styling the last 3 divs, notice that they have their ids */
+        #one,
+        #two,
+        #three {
+            /* CSS3 => the new value "inline-block" */
+            /* display: inline-block; */
+            /* 100% / 3 div => 33.333333333333 */
+            width: 33.33%;
+            background: burlywood;
+            /* We can also use "float: left" */
+            float: left;
+        }
+
+        #one {
+            background-color: #e84610;
+        }
+
+        #two {
+            background-color: #0799d3;
+            /*
+            Don't display this element with id of "two"
+            CSS will comment the HTML element code 
+            */
+            /* display: none; */
+
+            /*
+            Unlike the display property, 
+            the visibility property only hides the element.
+            It doesn’t remove it from the page. 
+            The element is still there in the flow of the page, but hidden. 
+            It still occupies the space just like any other visible element. 
+            The visibility property hides or shows the element. 
+            Set its value to hide the targeted content.
+            */
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>CSS General Look</h1>
+            <h2>Quick Introduction</h2>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <img src="images/pc.jpg" alt="Banner Image">
+        </header>
+
+        <aside id="side1" class="main-side">
+            <h3>I am a lucky aside element!</h3>
+            <p>
+                I am aside element! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <span style="font-weight: bold; font-style: italic;">Ducimus quia odio</span>,
+                ipsum, nam, aut sit tempore cumque omnis culpa voluptate optio asperiores fugiat. Maiores hic eum
+                neque, totam quas numquam?
+            </p>
+            <p>Hi there I am the last p element in this aside</p>
+            <!-- 
+                Just for fun, I have my own tag "mytag"
+                by default the browser will consider any unrecognized element
+                to be inline element
+             -->
+            <mytag>Hi there I am tag 1</mytag>
+            <mytag>Hi there I am tag 2</mytag>
+        </aside>
+
+        <main class="content">
+            <article>
+                <h2>About CBC</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                    quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                    autem perferendis rem minima. Reprehenderit!</p>
+                <h2>IT Programmes</h2>
+                <ul>
+                    <li>SW Eng.</li>
+                    <li>Database Admin.</li>
+                    <li>Network Admin</li>
+                    <li>FSSD</li>
+                </ul>
+            </article>
+
+            <!-- 
+                NEW HTML5 element named figure
+                Block-Level Element
+            -->
+            <figure>
+                <!-- place our img element -->
+                <img src="https://canadianbusinesscollege.com/wp-content/uploads/new-color_213_100.png" alt="CBC Logo">
+                <figcaption>CBC Previous Logo</figcaption>
+            </figure>
+
+            <!-- 
+                Quick Review: 
+                Using span as an inline element
+                Using inline styles
+             -->
+            <span style="border: 3px dashed  rgb(153, 145, 31)">
+                Hi there! I am the first span element inside main,
+                that contains just few words!
+            </span>
+
+            <article class="pc">
+                <h2>Don's computer</h2>
+                <p>
+                    Don's computer, Lorem ipsum dolor sit amet consectetur <em>adipisicing</em> elit. Id saepe
+                    reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>Sam's computer</h2>
+                <p>
+                    Sam's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore <em>tenetur omnis</em>.
+                </p>
+            </article>
+
+            <article id="mac">
+                <h2>Martin's computer</h2>
+                <p>
+                    Martin's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod <em>similique</em>
+                    beatae,
+                    quis
+                    eaque dolore tenetur omnis.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt veritatis facilis voluptatum quos
+                    iure cupiditate soluta maxime vitae quaerat. Sed iste cupiditate porro sequi quod dolorum, similique
+                    doloribus aliquam et.
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>Alex's computer</h2>
+                <p>
+                    Alex's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <article id="fssd">
+                <h2>About FSSD</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                    quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                    autem perferendis rem minima. Reprehenderit!</p>
+                <h2>Program Modules</h2>
+                <ul>
+                    <li>HTML and CSS</li>
+                    <li>Bootstrap Framework</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>Databases</li>
+                </ul>
+
+                <h2>Prorgramming Languages</h2>
+                <ul id="special-ul">
+                    <li>Client-Side Languages</li>
+                    <li>Sever-Side Languages</li>
+                </ul>
+
+                <span style="border: 3px dotted  rgb(112, 7, 47)">
+                    Hi there! I am the second span element inside article,
+                    that contains just few words!
+                </span>
+            </article>
+
+            <article>
+                <h2 class="sports geography">Political News</h2>
+                <p class="geography">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, sed.</p>
+            </article>
+
+            <section id="samples">
+                <h2>My Samples</h2>
+                <div class="sample any-other-class" style="height: 100px">
+                    Here is the content of first sample
+                </div>
+                <div class="sample" style="height: 300px">
+                    Here is the content of second sample
+                </div>
+                <div class="sample" style="height: 200px">
+                    Here is the content of third sample
+                </div>
+            </section>
+
+            <section id="items">
+                <h2>My Items</h2>
+                <div class="item">
+                    Here is the content of first item
+                </div>
+                <div class="item">
+                    Here is the content of second item
+                </div>
+                <div class="item">
+                    Here is the content of third item
+                </div>
+                <!-- 
+                    using our class "clear"
+                    has the property => clear: both
+                 -->
+                <div class="clear">
+                    <!-- Here is my last div of items -->
+                </div>
+            </section>
+
+            <table>
+                <!-- HTML5 ==> table head ==> <thead> -->
+                <thead>
+                    <tr>
+                        <th colspan="5">Canadian Business College
+                            <!-- <img src="https://canadianbusinesscollege.com/wp-content/uploads/new-color_213_100.png" alt="cbc"> -->
+                        </th>
+                    </tr>
+                </thead>
+                <!-- HTML5 ==> Table body ==> <tbody> -->
+                <tbody>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Subject</th>
+                        <th>Classroom</th>
+                        <th>Time</th>
+                    </tr>
+
+                    <tr>
+                        <td>Alex</td>
+                        <td>Chow</td>
+                        <td>Music</td>
+                        <td>8</td>
+                        <td>10 AM - 1 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Alexa</td>
+                        <td>Chow</td>
+                        <td>Math</td>
+                        <td>9</td>
+                        <td>10 AM - 1 PM</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="5">You can register now!</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div id="three-div">
+                <div id="one">
+                    Here is the content of the first div
+                </div>
+                <div id="two">
+                    Here is the content of the second div
+                </div>
+                <div id="three">
+                    Here is the content of the third div
+                </div>
+            </div>
+        </main>
+
+        <aside id="side2" class="main-side">
+            <h3>I am a lucky aside element!</h3>
+            <p>
+                I am aside element! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <span style="font-weight: bold; font-style: italic;">Ducimus quia odio</span>,
+                ipsum, nam, aut sit tempore cumque omnis culpa voluptate optio asperiores fugiat. Maiores hic eum
+                neque, totam quas numquam?
+            </p>
+            <p>Hi there I am the last p element in this aside</p>
+            <!-- 
+                Just for fun, I have my own tag "mytag"
+                by default the browser will consider any unrocginized element
+                to be inline element
+             -->
+            <mytag>Hi there I am tag 1</mytag>
+            <mytag>Hi there I am tag 2</mytag>
+        </aside>
+        <!-- <div class="clear"></div> -->
+        <footer>
+            Hi there! I am the footer! Copyright 2020 - Learning CSS - Canadian Business College
+        </footer>
+    </div>
+</body>
+
+</html>

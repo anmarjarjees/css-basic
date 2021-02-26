@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Sizing 1</title>
+    <style>
+        /* 
+        HTML5 offers some new elements, primarily for semantic purposes. The elements include:
+        section, article, aside, header, footer, nav, figure, figcaption, time, mark & main.
+
+        These element don't work with old IE versions (not supported)
+        which means these elements will be displayed as inline elements with the old versions of IE
+        because IE can't recognize them as block-level element
+        */
+        section,
+        article,
+        aside,
+        header,
+        footer,
+        nav,
+        figure,
+        figcaption,
+        main {
+            display: block;
+        }
+
+        body {
+            background: url(images/pc.jpg) rgb(86, 94, 59);
+        }
+
+        div.wrapper {
+            width: 1200px;
+            background-color: rgb(253, 253, 243);
+            margin: auto;
+        }
+
+        header {
+            background-color: brown;
+        }
+
+        main {
+            background-color: rgb(124, 245, 204);
+            /* 
+            Width and height define the width and the height of an element 
+            without any padding or border taking into account. 
+            */
+
+            /* The original/pure width without any padding or borders */
+            width: 900px;
+
+            /* 
+            display: inline; => will not work in this situation/case
+            With 'display: inline', the width, height, margin-top, margin-bottom, 
+            and float properties have NO effect.
+            Property is ignored due to the display.
+           
+            display: inline;
+
+            With CSS3: We can convert a block-level element 
+            to be inline without losing its width and height:
+            display: inline-block; => will make the two elements besides each other 
+            display: inline-block;
+            */
+            float: left;
+
+            /* a space to breath! */
+            padding: 10px;
+
+            /* 
+            - padding of 10px
+            900px original width - 10px padding left - 10px padding right
+            */
+            width: 880px;
+
+            border-right: 5px inset rgb(72, 112, 12);
+
+            /* 
+            the recent width 880px - 5px = 875px
+            */
+            width: 875px;
+
+            /* 
+            Above was the first original solution that works with any browser
+            -----------------------------------------------------------------
+            
+            Let's try the other solution from CSS3:
+            CSS3 property: box-sizing: 
+            The box-size property allows us to define the size of an element 
+            without having to worry about the size of the padding and border!
+
+            can have two values:
+            border-box => tells the browser to include padding and border in the overall size of the element
+            content-box => keeps padding and border out of the total size of the element (the default)
+
+            to practice this new property, we will use the original width:
+            */
+            width: 900px;
+            box-sizing: border-box;
+        }
+
+        aside {
+            background-color: rgb(248, 213, 238);
+            /* width: 296px; with display block */
+            width: 300px;
+            /* display: inline; => will not work here for the same reason as main element styles  */
+            /* display: inline-block; Using CSS3 new value "inline-block" */
+            /* display: inline-block; */
+            float: left;
+            /* or: */
+            /* float: right; */
+
+            padding: 10px;
+            /* after padding we need change the width */
+            width: 280px;
+
+            /* Let's use the original width of 300px */
+            width: 300px;
+            box-sizing: border-box;
+            /* 
+            you can also check the compatibility:
+            using a website: CanIuse.com
+            The link: https://caniuse.com/
+            */
+        }
+
+        footer {
+            /* 
+            We have a floating element "main element" around/left the footer element
+            */
+            /* clear: right; */
+            /* clear: left; */
+            /* Or just use clear both  */
+            background-color: rgb(167, 184, 233);
+            /* 
+            I don't want to see any element on the left side or any element on the right side:
+            Indicates which sides of an element's box(es) may not be adjacent to an earlier floating box
+             */
+            clear: both;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        /* for more practice about display inline */
+        #samples {
+            background: burlywood;
+        }
+
+        #samples div {
+            background: rgb(245, 241, 4);
+            display: inline-block;
+            /* 
+            since their container is 900px
+            900px / 3 div(s) => each div has 300px
+
+            but with display inline-block, the browser will add fex pixel gap
+            we found by testing that each one can have 297px to fit in one line
+            */
+            width: 289px;
+            /* height: 300px; */
+        }
+
+        /* 
+        Or: 
+        Warning: Do not use empty rulesets
+        */
+        .sample {
+            /* background: rgb(245, 241, 4); */
+        }
+
+
+        /* for more practice about float options */
+        #items {
+            background: dodgerblue;
+        }
+
+        /* #items div Or we can use */
+        .item {
+            background: darkturquoise;
+            float: left;
+            /* 
+            since their container is 900px width
+            900px / 3 div(s) => each div has 300px
+            */
+            width: 300px;
+
+            /* 
+            After adding box-sizing property:
+            using the calculator with chrome tool computed feature
+            Chrome tools => the computed width => 875.018px
+            divide the value of  875.018px / 3 divs
+            */
+            width: 291.67px;
+        }
+
+        /* 
+        Styling my own element :-)
+        mytag is invalid, we can keep it just for fun
+         */
+        mytag {
+            /* 
+            The browser will treat my element "mytag" to be a block-level element like p element: 
+            W3C Validator - Error: Element mytag not allowed as child of element
+            */
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>CSS General Look</h1>
+            <h2>Quick Introduction</h2>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <img src="images/pc.jpg" alt="Banner Image">
+        </header>
+
+        <main class="content">
+            <article>
+                <h2>About CBC</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                    quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                    autem perferendis rem minima. Reprehenderit!</p>
+                <h2>IT Programmes</h2>
+                <ul>
+                    <li>SW Eng.</li>
+                    <li>Database Admin.</li>
+                    <li>Network Admin</li>
+                    <li>FSSD</li>
+                </ul>
+            </article>
+
+            <!-- 
+                NEW HTML5 element named figure
+                Block-Level Element
+            -->
+            <figure>
+                <!-- place our img element -->
+                <img src="https://canadianbusinesscollege.com/wp-content/uploads/new-color_213_100.png" alt="CBC Logo">
+                <figcaption>CBC Logo</figcaption>
+            </figure>
+
+            <!-- 
+                Quick Review: 
+                Using span as an inline element
+                Using inline styles
+             -->
+            <span style="border: 3px dashed  rgb(153, 145, 31)">
+                Hi there! I am the span element that contains just few words!
+            </span>
+
+            <article class="pc">
+                <h2>Don's computer</h2>
+                <p>
+                    Don's computer, Lorem ipsum dolor sit amet consectetur <em>adipisicing</em> elit. Id saepe
+                    reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>Sam's computer</h2>
+                <p>
+                    Sam's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore <em>tenetur omnis</em>.
+                </p>
+            </article>
+
+            <article id="mac">
+                <h2>Martin's computer</h2>
+                <p>
+                    Martin's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod <em>similique</em>
+                    beatae,
+                    quis
+                    eaque dolore tenetur omnis.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt veritatis facilis voluptatum quos
+                    iure cupiditate soluta maxime vitae quaerat. Sed iste cupiditate porro sequi quod dolorum, similique
+                    doloribus aliquam et.
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>Alex's computer</h2>
+                <p>
+                    Alex's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <article id="fssd">
+                <h2>About FSSD</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                    quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                    autem perferendis rem minima. Reprehenderit!</p>
+                <h2>Program Modules</h2>
+                <ul>
+                    <li>HTML and CSS</li>
+                    <li>Bootstrap Framework</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>Databases</li>
+                </ul>
+
+                <h2>Prorgramming Languages</h2>
+                <ul id="special-ul">
+                    <li>Client-Side Languages</li>
+                    <li>Sever-Side Languages</li>
+                </ul>
+            </article>
+
+            <article>
+                <h2 class="sports geography">Political News</h2>
+                <p class="geography">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, sed.</p>
+            </article>
+
+            <section id="samples">
+                <h2>My Samples</h2>
+                <div class="sample any-other-class" style="height: 100px">
+                    Here is the content of first sample
+                </div>
+                <div class="sample" style="height: 300px">
+                    Here is the content of second sample
+                </div>
+                <div class="sample" style="height: 200px">
+                    Here is the content of third sample
+                </div>
+            </section>
+
+            <section id="items">
+                <h2>My Items</h2>
+                <div class="item">
+                    Here is the content of first item
+                </div>
+                <div class="item">
+                    Here is the content of second item
+                </div>
+                <div class="item">
+                    Here is the content of third item
+                </div>
+                <!-- 
+                    using our class "clear"
+                    has the property => clear: both
+                 -->
+                <div class="clear">
+                    <!-- Here is my last div of items -->
+                </div>
+            </section>
+
+            <table>
+                <!-- HTML5 ==> table head ==> <thead> -->
+                <thead>
+                    <tr>
+                        <th colspan="5">Canadian Business College
+                            <!-- <img src="https://canadianbusinesscollege.com/wp-content/uploads/new-color_213_100.png" alt="cbc"> -->
+                        </th>
+                    </tr>
+                </thead>
+                <!-- HTML5 ==> Table body ==> <tbody> -->
+                <tbody>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Subject</th>
+                        <th>Classroom</th>
+                        <th>Time</th>
+                    </tr>
+
+                    <tr>
+                        <td>Alex</td>
+                        <td>Chow</td>
+                        <td>Music</td>
+                        <td>8</td>
+                        <td>10 AM - 1 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Alexa</td>
+                        <td>Chow</td>
+                        <td>Math</td>
+                        <td>9</td>
+                        <td>10 AM - 1 PM</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="5">You can register now!</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </main>
+
+        <aside>
+            <h3>I am a lucky aside element!</h3>
+            <p>
+                I am aside element! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <span style="font-weight: bold; font-style: italic;">Ducimus quia odio</span>,
+                ipsum, nam, aut sit tempore cumque omnis culpa voluptate optio asperiores fugiat. Maiores hic eum
+                neque, totam quas numquam?
+            </p>
+            <p>Hi there I am the last p element in this aside</p>
+            <!-- 
+                Just for fun, I have my own tag "mytag"
+                by default the browser will consider any unrocginized element
+                to be inline element
+             -->
+            <mytag>Hi there I am tag 1</mytag>
+            <mytag>Hi there I am tag 2</mytag>
+        </aside>
+        <!-- <div class="clear"></div> -->
+        <footer>
+            Hi there! I am the footer! Copyright 2020 - Learning CSS - Canadian Business College
+        </footer>
+    </div>
+</body>
+
+</html>

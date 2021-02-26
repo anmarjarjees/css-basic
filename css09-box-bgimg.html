@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box and BG-Images</title>
+    <style>
+        /* 
+Useful Links From LMS:
+- https://dummyimage.com/ => To generate a background color image with text
+- https://css-tricks.com
+- https://css-tricks.com/almanac/properties/b/background-position/
+- https://pages.github.com/
+ */
+
+        /* Q#: All the elements have margin of 0 from the top, bottom, left, and right */
+        * {
+            margin: 0;
+        }
+
+        /* 
+        HTML5 Semantic Elements:
+        https://www.w3schools.com/html/html5_semantic_elements.asp
+         */
+
+        /* starting with the body */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            /* background-color: rgb(134, 99, 11); */
+
+            /* 
+            background-image sets one or several images for the background of the element: 
+            */
+            /* background-image: url("images/apple.jpg"); */
+
+            /* 
+            Let's suppose that you have the css external inside css folder
+            and your image inside images folder which is inside your assets folder (like your css assignment)
+
+            The solution: background-image: url("../assets/images/image-name");
+            */
+
+            /* 
+            background-repeat specifies how the background image is repeated.
+            by default background image is repeated vertically (Y-axis) and horizontally (X-axis). 
+
+            background-repeat should come/written after the background-image
+
+            This will be applied if background-repeat is not set at all:
+            */
+            /* background-repeat: no-repeat; */
+
+            /* 
+            We can repeat the background-image horizontally by adding the value repeat-x or vertically with the value of repeat-y
+            to the background-repeat property:
+             */
+            /* background-repeat: repeat-y; */
+
+            /* 
+            background-attachment:
+            tells the browser if the background image is fixed:
+            */
+            /* background-attachment: fixed; */
+
+            /* 
+            background-origin: 
+            sets the point where the background image should start from and where it ends 
+            relative to the areas in the box model
+
+            The values:
+            border-box
+            content-box
+            padding-box
+
+            Please refer to LMS to read about this property
+            Or check this MDN article:
+            https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin
+            */
+            border: 50px dotted red;
+            /* background-origin: content-box; */
+            /* 
+            NOTE: 
+            Note that background-origin is ignored when background-attachment is fixed.
+            */
+
+            /*
+            ***************** Background Shorthand
+            bg = background
+
+            background: bg-image bg-position / bg-size bg-repeat bg-attachment bg-origin bg-clip bg-color
+
+            bg-image: url(...)
+
+            bg-position [background-position]: top left
+
+            bg-size [background-size]
+            the link for this property: 
+            https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
+
+            bg-repeat [background-repeat]: repeat-x, repeat-y, etc...
+
+            bg-attachment [background-attachment]
+
+            bg-origin [background-origin]
+
+            bg-clip [background-clip]
+
+            bg-color [background-color]
+            */
+            background: url("images/apple.jpg") top left / cover repeat-y fixed border-box padding-box rgb(153, 145, 31);
+
+            /* background-size: cover; */
+
+            /* 
+            background-clip:border-box
+            The link: https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip */
+
+            /*
+            We can add more background image properties:
+            Undefined properties are set to their initial values:
+        
+            background-image: none =>  url("images/apple.jpg") 
+            background-position: 0% 0%
+            background-size: auto auto
+            background-repeat: repeat =>  repeat-y
+            background-origin: padding-box
+            background-clip: border-box
+            background-attachment: scroll => fixed
+            background-color: transparent =>  rgb(105, 102, 63)
+
+            Note:
+            The background-size value may only be included immediately after <position>, 
+            separated with the '/' character, like this: "center/80%".
+
+            in our example:
+            top left / cover
+            */
+            /* background: url("filename.jpg") rgb(224, 220, 162); */
+        }
+
+        /* 
+        - I want to style any element class named "wrapper" that is inside a div element => div .wrapper
+        - I want to style any element class named "wrapper" => .wrapper { my styles... }
+        - I want to style the div element with class named "wrapper" => div.wrapper
+        */
+        div.wrapper {
+            background-color: rgb(247, 237, 225);
+            /* background: url("images/pc.jpg"); */
+            width: 1200px;
+            /*
+            Padding creates a space between the content and the border area. 
+            It increases the size inside of the element
+            */
+
+            /* 
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 5px;
+            padding-left: 5px; 
+            */
+            padding: 20px;
+            /* 10 px for all 4 sides */
+
+            /* 
+            the actual width of this box will be 1200px + 20px + 20px => 1240px 
+            */
+
+
+            /* This will make all the border sides with the same styles: */
+            border: 1px solid rgb(161, 129, 87);
+
+            /* 
+            after adding the border, the box size will be changed/increased:
+            the size of this box will be 1200px + 20px + 20px + 1px + 1px => 1242px
+            */
+
+            /* 
+                It is possible to define different border for each side of the element 
+            */
+            border-left: 1px solid green;
+            border-top: 5px dotted red;
+            border-bottom: 3px dashed blue;
+            border-right: 4px ridge purple;
+
+            /* 
+            Margin creates space around the elements: 
+            The rules for margin are the same rules for padding
+            margin-top;
+            margin-right;
+            margin-bottom;
+            margin-left;            
+            */
+
+            margin-top: 5px;
+            margin-right: 200px;
+            margin-bottom: 10px;
+            margin-left: 500px;
+
+            /* 
+            CSS Trick (CSS assignment):
+            We need to let the browser calculate the left and the right margins "automatically" in order to center our element, so we can simply change the values of left and right margins only to be "auto"
+            margin-left: auto;
+            margin-right: auto;
+            */
+            margin-top: 5px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            margin-left: auto;
+
+            /* Or in one line: */
+            /* TOP then RIGHT then BOTTOM then LEFT */
+            margin: 5px auto 10px auto;
+        }
+
+        main {
+            background-color: rgb(201, 241, 241);
+        }
+
+        aside {
+            background-color: rgb(221, 148, 166);
+        }
+
+        figure {
+            border: 1px solid rgb(149, 150, 132);
+        }
+
+        /* 
+        style the article with id="fssd" => article#fssd
+        */
+        article#fssd {
+            border: 1px solid rgb(194, 178, 107);
+            /* 
+            article is a block-level element we can use width and height 
+            */
+            height: 300px;
+            background-image: url("images/pc.jpg");
+            background-repeat: no-repeat;
+            /* 
+            background-size:contain;
+
+            Image will fill whole container/article element:word-spacing:
+            background-size sets the width and height of the background image. 
+            The value can be a keyword. 
+            The "contain" keyword scales the image to fit inside the container, but it doesn’t affect the ratio of the image, 
+
+            same thing with "cover" the browser will scale the image to fill its container, but it doesn’t affect the ratio of the image, 
+
+            meaning that the image will not be squeezed:
+            */
+            background-size: cover;
+            /*
+            background-size:cover;
+            We can use keyword cover as well. Then the image will cover the entire area of the container:
+            */
+        }
+
+
+        /* Start styling our table */
+        table {
+            border: 2px ridge rgb(141, 132, 9);
+            width: 700px;
+            /*  
+            Centre this table horizontally (in the center of the browser from left to right)
+            put 10px of margining from the top and bottom sides:
+
+            Hint:
+            Remember table is a block-level element
+            Any block-level element can be centered in the browser window usin our CSS trick:
+            to put auto margining from the left and right
+
+            Margining: TOP then RIGHT then BOTTOM then LEFT 
+            margin: value1 value2 value3 value4;
+            value1 => the top margin
+            value2 => the right margin
+            value3 => the bottom margin
+            value4 => the left margin
+            */
+            margin: 10px auto 10px auto;
+        }
+
+        /* I want to add a border for all the table cells and we have td and th */
+        /* Style both the <td> and <th> element of any table: */
+        th,
+        td {
+            border: 1px solid rgb(172, 172, 144);
+        }
+
+        /* Style the table head */
+        thead {
+            background-color: rgb(247, 219, 167);
+            font-size: 120%;
+            color: rgb(51, 48, 3);
+            /* Or link to an online image  */
+            background-image: url("https://canadianbusinesscollege.com/wp-content/uploads/2020/09/CBC-New-Logo-Website.png");
+
+            /* the height will not take effect */
+            /* height: 500px; */
+            background-repeat: no-repeat;
+
+            text-align: right;
+            /*
+            background-position sets the horizontal and vertical position of the image inside the container. 
+            We can use several keywords: 
+            - left, right, top, bottom, center their order doesn’t matter. 
+            They can be used in pairs as well but not for the same axis. 
+            This means that we can use top right or top left, but not top bottom or left right. 
+            If only one keyword is used, then the other is set to center:
+            */
+            background-position: left top;
+
+            /* 
+            Or we can use x and y
+            The value can be a unit of measurement as well, 
+            where the first value sets the position on the X-axis,
+            and the second value sets the position on the Y-axis.
+            */
+            /* background-position: 30px 10px; */
+        }
+
+        /* 
+        We couldn't set the height property for thead, 
+        the browser will ignore the value
+        So will modify the height value of the th or tr which is inside the thead
+
+        thead tr or thead th
+        */
+
+        thead tr {
+            height: 80px;
+        }
+
+        tbody {
+            background-color: rgb(237, 243, 222);
+        }
+
+        tfoot {
+            background-color: rgb(104, 91, 68);
+            color: rgb(245, 241, 236);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <!-- h1 can be placed inside header element [not article or section] -->
+            <h1>CSS General Look</h1>
+            <h2>Quick Introduction</h2>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <img src="images/pc.jpg" alt="Banner Image">
+        </header>
+
+        <main class="content">
+            <article>
+                <h2>About CBC</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                    quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                    autem perferendis rem minima. Reprehenderit!</p>
+                <h2>IT Programms</h2>
+                <ul>
+                    <li>SW Eng.</li>
+                    <li>Database Admin.</li>
+                    <li>Network Admin</li>
+                    <li>FSSD</li>
+                </ul>
+            </article>
+
+            <!-- 
+                NEW HTML5 element named figure
+                Block-Level Element
+            -->
+            <figure>
+                <!-- place our img element -->
+                <img src="https://canadianbusinesscollege.com/wp-content/uploads/new-color_213_100.png" alt="CBC Logo">
+                <figcaption>CBC Logo</figcaption>
+            </figure>
+
+            <!-- 
+                Quick Review: 
+                Using span as an inline element
+                Using inline styles
+
+                span element should not be used as a container by itself
+             -->
+            <span style="border: 3px dashed  rgb(153, 145, 31)">
+                I am a span element that contains just few words!
+            </span>
+
+            <article class="pc">
+                <h2>Alex's computer</h2>
+                <p>
+                    Alex's computer, Lorem ipsum dolor sit amet consectetur <em>adipisicing</em> elit. Id saepe
+                    reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>Sarah's computer</h2>
+                <p>
+                    Sarah's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore <em>tenetur omnis</em>.
+                </p>
+            </article>
+
+            <article id="mac">
+                <h2>Martin's computer</h2>
+                <p>
+                    Martin's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod <em>similique</em>
+                    beatae,
+                    quis
+                    eaque dolore tenetur omnis.
+                </p>
+                <!-- 
+                    Inline Styles: HTML Attribute named "style":
+                    You add your style declarations to a HTML element’s style attribute
+                    style=" declarations "
+                 -->
+                <p style="color:darkorange; background-color:maroon;">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt veritatis facilis voluptatum quos
+                    iure cupiditate soluta maxime vitae quaerat. Sed iste cupiditate porro sequi quod dolorum, similique
+                    doloribus aliquam et.
+                </p>
+            </article>
+
+            <article class="pc">
+                <h2>William's computer</h2>
+                <p>
+                    William's computer, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id saepe reprehenderit
+                    explicabo unde optio harum vitae tempore quae dolores commodi aperiam, sint quod similique beatae,
+                    quis eaque dolore tenetur omnis.
+                </p>
+            </article>
+
+            <article id="fssd">
+                <h2>About FSSD</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quidem rerum tenetur illum qui
+                    quisquam inventore nesciunt veritatis possimus, enim unde asperiores consequatur odio reprehenderit
+                    autem perferendis rem minima. Reprehenderit!</p>
+                <h2>Program Modules</h2>
+                <ul>
+                    <li>HTML and CSS</li>
+                    <li>Bootstrap Framework</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>Databases</li>
+                </ul>
+
+                <h2>Prorgramming Languages</h2>
+                <ul id="special-ul">
+                    <li>Client-Side Languages</li>
+                    <li>Sever-Side Languages</li>
+                </ul>
+            </article>
+
+            <article>
+                <h2 class="sports geography">Political News</h2>
+                <p class="geography">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, sed.</p>
+            </article>
+
+            <table>
+                <!-- HTML5 ==> table head ==> <thead> -->
+                <thead>
+                    <tr>
+                        <th colspan="5">Canadian Business College
+                            <!-- <img src="https://canadianbusinesscollege.com/wp-content/uploads/new-color_213_100.png" alt="cbc"> -->
+                        </th>
+                    </tr>
+                </thead>
+                <!-- HTML5 ==> Table body ==> <tbody> -->
+                <tbody>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Subject</th>
+                        <th>Classroom</th>
+                        <th>Time</th>
+                    </tr>
+
+                    <tr>
+                        <td>Alex</td>
+                        <td>Chow</td>
+                        <td>Music</td>
+                        <td>8</td>
+                        <td>10 AM - 1 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Alexa</td>
+                        <td>Chow</td>
+                        <td>Math</td>
+                        <td>9</td>
+                        <td>10 AM - 1 PM</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="5">You can register now!</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </main>
+
+        <aside>
+            <h3>I am a lucky aside element!</h3>
+            <p>
+                I am aside element! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <span style="font-weight: bold; font-style: italic;">Ducimus quia odio</span>,
+                ipsum, nam, aut sit tempore cumque omnis culpa voluptate optio asperiores fugiat. Maiores hic eum
+                neque, totam quas numquam?
+            </p>
+        </aside>
+
+
+        <!-- Inline Style: -->
+        <footer style="background-color:lightgreen">
+            Copyright 2021 - Learning CSS - Canadian Business College
+        </footer>
+    </div>
+</body>
+
+</html>
