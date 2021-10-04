@@ -3,62 +3,132 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- this line for old ie versions, only VS code adds this code -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--	
-        First Step:
-        By default Mobile devices zoom out the page 
-        to make it all fit within the screen of our mobile devices. 
-        We need to disable this default feature:
+
+    <!-- 
+        First Initial Required Step: using this meta element 
+        ****************************************************
+        By default Mobile devices (small screen) scaling (zoom out) the web page 
+        to make it all the page content fit within the screen of our mobile devices. 
+        
+        In RWD, we don't want to shrink/squeeze our website!
+        We need to change its layout/dimension/width
+        so we have to disable this default feature by adding the following code:
+
+        Notes: 
+        - Removing this meta code will disable the media queries
+        - Notice that we have used this code <meta> many times before,
+        but now it's the time to use it :-)
      -->
-    <!-- using meta element -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RWD Part1</title>
+    <title>RWD Part#1</title>
     <!-- RWD: Responsive Web Design -->
     <!-- Internal Styles -->
     <style>
         /* 
         Two main parts:
-        - Global Styles: the styles that we need for every device/view-port
-        - Specific Styles: the styles that we need for specific devices/view-ports
+        - Global Styles: the styles that we need for every device/view-port/screen size
+        - Specific Styles: the styles that we need for specific devices/view-ports/screen size
         */
 
-
-        /* Global Styles for any device */
+        /* Global Styles for any device or any screen size or any media */
+        /* 
+        to override the default styles for the browsers 
+        like adding margins for p or div elements etc...
+	    */
         * {
             margin: 0;
+            padding: 0;
+            /* 
+            If we are going to use borders and paddings for our block-level element
+            Since we know, this nice CSS3 property to include the paddings and the borders within the width
+            we can apply it for any element just in case :-)
+            
+            So we can take the advantage of the following CSS3 property
+            to include all the extra pixels of borders and padding with the element width
+             */
+            box-sizing: border-box;
+        }
+
+        /*
+            We need to make sure that the new HTML5 elements 
+            that we use in this website are displayed/treated as block-level elements 
+            only for the very old browsers versions or for IE 8 and less!
+            The highest and last version of IE is IE11
+            for more checking: canIuse.com
+        */
+        header,
+        footer,
+        section,
+        article,
+        main,
+        aside,
+        nav,
+        figure,
+        figcaption {
+            display: block;
         }
 
         div.wrapper {
-            background-color: pink;
+            background-color: rgb(0, 0, 255);
             margin: auto;
-
-            /* width: 1000px; RWD!!!! fixed width! */
+            /* width: 1000px; RWD!!!! We cannot use a fixed width value! */
             /* 
-            with RWD, we should not use fixed width for main division 
-            We will not use width, we will use max-width
+            with RWD, we do not use fixed width for main division (container) for our elements
+            We will we will use max-width instead width
+
+            Feel free to set the maximum value that can work nicely with your website layout and content
              */
-            max-width: 1000px;
-            /* OR: */
+            max-width: 1200px;
+            /* 
+                OR: We can use the width property but relative value: % or em 
+                but be careful the website will not have a limit to stop straging out!
+                as the example below:
+            */
             /* width: 90%; */
+
+            /* 
+            To summarize, with RWD:
+            - max-width: ?px; (commonly used)
+            - width: ?% or ?em
+
+            Yes, we can also specify the minimum width to squeeze my page: min-width: 300px;
+            But we don't have to do it
+            */
+        }
+
+        header {
+            background-color: rgb(235, 201, 109);
+        }
+
+        nav {
+            background-color: rgb(141, 240, 111);
         }
 
         /* 
-        Give the main element a red background color
-        main element it the parent for these elements:
+        Giving the <main> element a red background color
+        notice that <main> element it the parent for these elements (children):
         - aside 
         - section
         - aside
         */
         main {
-            background-color: red;
-            /* this red color is invisible because all margins are 0 */
+            background-color: rgb(194, 113, 6);
+            /* 
+            this background color is invisible because:margin: 
+            - all children margins 
+            - main element has no padding are 0 
+            */
         }
 
         /* 
         Target the two aside elements inside the main element:
         */
         main aside {
-            background-color: yellow;
+            background-color: bisque;
+            /* Remember that the padding will be included within the element width based on what we have set for * */
+            padding: 5px;
         }
 
         /* 
@@ -66,39 +136,92 @@
         */
         main section {
             background-color: rgb(151, 206, 224);
+            padding: 5px;
         }
 
         footer {
-            background-color: lightgreen;
+            background-color: red;
             text-align: center;
         }
 
+
+        nav ul {
+            list-style-type: none;
+        }
+
         /* 
-        Second step: using Media Queries (CSS3):
-        we always start with "Mobile first".
+        Target any img element:
+        Review our previous examples about using images for RWD
+        OR: https://www.w3schools.com/css/css_rwd_images.asp 
+        */
+        img {
+            max-width: 100%;
+        }
 
-        Specific (Customized) Styles for specific screen sizes 
-        Using "Media Queries": 
+        /* 
+        Second step: using Media Queries (CSS Level 3):
 
-        Two conditions for any screen size (device):
-            - only screen (not for printing)
-            - max-width or min-width or both	
-        
+        CSS Media Types:
+        CSS media types allow you to format your documents 
+        to be presented correctly on various types of media 
+        such as screen, print, an aural browser, etc.
+
+        The three different major devices/screen sizes:
         - Mobile devices
         - Tablet devices
         - Desktop/laptop
+        
+        NOTE:
+        We always start with "Mobile first" because this will make the page display faster on smaller devices
 
-        Google Devices:
-        iPhone4, 5: width 320px
-        iPhone6,7,8, x: width: 375px
-        GalaxyS5: width 360px
+          
+        "Media Queries": Specific (Customized) Styles for specific screen sizes 
+        
+        Two conditions for any screen size (device):
+            - only screen (not for printing) / for printing (not on any screen)
+            - max-width or min-width or both	
+
+        The @media rule is used to define different style rules for different media types
         */
 
         /* 
-        style (target) mobile devices [Small Screens] (First) 
-        */
-        @media only screen and (max-width: 415px) {
+          Style (target) mobile devices [Small Screens] (First) 
+          Yes, we have too many screen width for mobile devices!
 
+          Examples We can use Google Devices on Chrome to get an idea about the screen width range:
+            - iPhone 4, 5: width 320px
+            - iPhone 6,7,8, x: width: 375px
+            - Galaxy S5: width 360px
+            - iphone X: width 375px
+            - 
+        
+        We can also use these as general guidelines to set our break pints or just getting an idea:
+        Check this link" http://getskeleton.com/
+        Title: MEDIA QUERIES
+        
+        1- Desktop HD: 1200px
+        2- Desktop: 1000px
+        3- Tablet: 750px
+        4- Phablet: 550px
+        5- Mobile: 400px
+
+        We can take the idea from the above example to set "break-point"
+        breakpoint: just a value to refer to the max/min width in each media
+        
+        We don't have to set 5 breakpoints! You can decide by yourself
+
+        We can use: 
+        - @media only screen ...
+        - @media screen ...
+        */
+
+        /* For mobile: (small size screen) */
+        @media only screen and (max-width:415px) {
+
+            /* 
+            We are just saying any screen which is 415px width or less
+            Use the following CSS Rules:
+            */
             /* Set my rules for small mobile devices */
             /*	for testing */
             main section {
@@ -108,31 +231,37 @@
 
         /* end media mobile */
 
-
         /* 
         style tablet devices [Medium Screens] (without including mobile)
         We put the minimum to be 416px 
         as it's one pixel more than the max-width of the mobile screens
-        We specified the range size for tablet to be between 416px to 800px
+        We specified the range size for tablet (medium size screen) to be between 416px to 800px
         */
         @media only screen and (min-width: 416px) and (max-width: 800px) {
+
+            /* Set my rules for medium screen sizes */
+            /* for testing */
             main section {
                 background-color: rgb(192, 235, 218);
             }
         }
 
+        /* end media tablet */
 
         /* 
-        style desktop [Normal/Large Screens] devices  
+            style desktop [Normal/Large Screens] devices  
+
+            We can set the minimum width and that's enough!
+            We had already set the maximum width to be 1200px => max-width: 1200px;
         */
         @media only screen and (min-width: 801px) {
-            /* for testing */
-
+            /* Set my rules for small mobile devices */
             /* 
-            with large screens
-            we can display: 
-            the two aside elements (inside the main) 
-            plus the section (inside the main element) all in one line
+            with large screens (like landscape tablet for example, or desktop, or laptops)
+            we can display (inside the main element): 
+            - the two <aside> elements 
+            - the <section> element  
+            all in one line
 
             We will use the same technique: floating options
 
@@ -141,6 +270,10 @@
 
             /* style main */
             main {
+                /*
+                Using the CSS property/trick: overflow:
+                again to fix the issue the floating elements as I had explained before
+                */
                 overflow: hidden;
                 /* hidden or auto */
             }
@@ -161,12 +294,62 @@
                 float: left;
             }
 
-
         }
 
         /* end media desktop */
 
-        /* style huge/big desktop [Extra Large Screens] devices (no need) */
+        /* 
+          Yes, we can add another media query
+          for styling huge/big desktop [Extra Large Screens] devices (no need) 
+        */
+
+
+        /* 
+        ======================================================================================================
+        Just for extra info or more ideas: 
+        Here's a simple example of the media query for standard devices from the website: TutorialRepublic.com
+        Read more: https://www.tutorialrepublic.com/css-tutorial/css3-media-queries.php
+        ======================================================================================================
+        */
+        /* Smartphones (portrait and landscape) ---------- */
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            /* styles */
+        }
+
+        /* Smartphones (portrait) ---------- */
+        @media screen and (max-width: 320px) {
+            /* styles */
+        }
+
+        /* Smartphones (landscape) ---------- */
+        @media screen and (min-width: 321px) {
+            /* styles */
+        }
+
+        /* Tablets, iPads (portrait and landscape) ---------- */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            /* styles */
+        }
+
+        /* Tablets, iPads (portrait) ---------- */
+        @media screen and (min-width: 768px) {
+            /* styles */
+        }
+
+        /* Tablets, iPads (landscape) ---------- */
+        @media screen and (min-width: 1024px) {
+            /* styles */
+        }
+
+        /* Desktops and laptops ---------- */
+        @media screen and (min-width: 1224px) {
+            /* styles */
+        }
+
+        /* Large screens ---------- */
+        @media screen and (min-width: 1824px) {
+            /* styles */
+        }
     </style>
 </head>
 
@@ -199,13 +382,14 @@
             </aside>
 
             <section id="content">
-                <h1>Welcome to GreenSTart1</h1>
+                <h1>Welcome to GreenStart1</h1>
                 <article>
                     <h2>Our Green Events</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A incidunt accusamus nam, excepturi,
                         temporibus minus exercitationem veniam culpa pariatur. Repellendus dolorum facilis rem debitis
                         ad.
                         Eveniet maiores facere odio architecto.</p>
+                    <img src="images/mockup1.jpg" alt="Current Page Mockup">
                 </article>
                 <article>
                     <h2>Travel with GreenStart</h2>
@@ -227,7 +411,14 @@
                     ex. Et?</p>
             </aside>
 
-            <!-- One of the solution for fixing the floating issue -->
+            <!-- 
+                One of the solution for fixing the floating issue:
+                Adding a an empty block-level element like div element with the CSS property => clear:both
+                Applying a custom class like or using inline styles as shown below
+                For more details, refer to my in-class notes
+
+                But in our CSS, we used the other solution which by using the overflow: hidden for the main element
+            -->
             <!-- <div style="clear:both"></div> -->
         </main>
         <footer> &copy; 2021 GreenStart. All rights reserved. RWD Part 1</footer>

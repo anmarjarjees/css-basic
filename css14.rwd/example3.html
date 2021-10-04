@@ -4,18 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--	
-    First Step:
-    By default Mobile devices zoom out the page to make it all fit withing the screen of out mobile devices. 
-    We need to disable this default feature:
-        -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RWD Last Example</title>
+
     <style>
         /*	
 	    Global Rules: the general rules (styles) for any device or any screen size
         */
-
         * {
             margin: 0;
             padding: 0;
@@ -28,22 +23,24 @@
 
         body {
             font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+            /* We can add the other default font options as we learnt before: */
         }
 
         div.wrapper {
             /* using "max-width" with px in RWD */
-            max-width: 1200px;
+            max-width: 1400px;
+            /* to recap, we should NOT use width:1200px */
             margin: auto;
         }
 
-        /* adding some background colors */
+        /* adding some background and font colors */
         header,
         footer {
+            /* For testing, comment this background color for the header and footer: */
             background-color: darkslategrey;
             color: aliceblue;
             text-align: center;
         }
-
 
         /* give another background color for the main */
         main.main-content {
@@ -55,6 +52,7 @@
             background-color: aquamarine;
         }
 
+
         /* 
         adding some padding for all the main containers:
         <nav class="main-nav">
@@ -64,7 +62,7 @@
         nav.main-nav,
         main.main-content,
         aside.main-sidebar {
-            padding: 5px;
+            padding: 15px;
         }
 
         /* Styling the main navigation */
@@ -81,20 +79,29 @@
         }
 
         /* 
-        styling the <a> anchor elements of the main nav: LoVe HAte 
+        To recap:
+        Styling the <a> anchor elements of the main nav: link, visited, hover, and active => LoVe HAte 
+        But instead of creating 4 different styles for each status:
+        - link
+        - visited
+        - hover
+        - active
+        
+        We can also combine every logical pair together:
+        - link and visited
+        - hover and active
 
-        instead of creating 4 different styles, we can combine them:
+        For more details, you can refer to my in-class notes about HTML and CSS examples
         */
 
-        /* we can combine: Link and Visited */
+        /* 1. Combine: Link and Visited */
         nav.main-nav a:link,
         nav.main-nav a:visited {
             text-decoration: none;
             display: block;
         }
 
-
-        /* we can combine: hover and active */
+        /* 2, Combine: hover and active */
         nav.main-nav a:hover,
         nav.main-nav a:active {
             background-color: darkgreen;
@@ -126,9 +133,28 @@
             clear: both;
         }
 
-        /* *************  End of Global Styles *************** */
-        /* Second Step: Starting the media queries: */
+        figure {
+            background-color: #e9e9d0;
+            border: 2px solid #36270F;
+            margin: 10px auto;
+            /* 5px for all sides */
+            padding: 5px;
+            /* 5px for all sides */
+        }
 
+        figcaption {
+            /* To centre the figcaption text */
+            text-align: center;
+            /* To make it bold */
+            font-weight: bold;
+            /* To make 90% of the original font size which is 100% */
+            font-size: 90%;
+            color: rgb(23, 49, 1);
+        }
+
+        /* *************  End of Global Styles *************** */
+
+        /* Second Step: Starting the media queries: */
         /* 1. For mobile (Small Screen) First */
         @media only screen and (max-width: 500px) {
 
@@ -137,6 +163,8 @@
                 background-color: darkkhaki;
                 color: rgb(87, 83, 28);
             }
+
+            /* no layout to change in small screens, it looks fine! */
         }
 
         /* 2. For Tablet (Medium Screen) */
@@ -147,12 +175,18 @@
                 background-color: darkorange;
             }
 
-            /* 
-            we want to display the main element (content) 
+            /*
+            we want to display the main element (the main contents)
             and the aside element (sidebar) beside each other 
-            to have the aside bar besides the main elements
+            which means layout both the main element and the aside element horizontally
+            we want/like to have the aside bar besides the main elements
             the main element  + the aside element in one line:
+
+            if the total width is 100%
+            we can divide the 100% by the main and aside elements
+            let's set 70% for the main and 30% for the aside
             */
+
             main.main-content {
                 width: 70%;
                 float: left;
@@ -161,17 +195,26 @@
             aside.main-sidebar {
                 width: 30%;
                 float: left;
+                /* Or using float: right; also works here */
             }
         }
 
         /* 3. For Desktop (Normal Screen) */
         @media only screen and (min-width:901px) {
+            /*  
+            Notice here we haven't set any background color for the <header> element
+            as we did in the other media queries for small and large screens
+
+            So the browser will simply use the global CSS rules that we set above the media section,
+            we had already set the background color for the <header> element to be "darkslategrey"
+            */
+
             /* We want all the three elements:
             - the nav
             - the main
             - the aside
-            to be rendered in one line 
-             */
+            to be rendered/displayed/layout in one line (horizontally)
+            */
 
             nav.main-nav {
                 width: 20%;
@@ -186,12 +229,17 @@
             aside.main-sidebar {
                 width: 20%;
                 float: left;
+                /* Or using float: right; also works here */
             }
+
         }
 
-        /* For printing: */
+        /* For printing (CSS3): */
         @media print {
 
+            /* 
+            To save the ink, we can set the background for the main element be white:
+            */
             header,
             main.main-content,
             aside.main-sidebar,
@@ -202,6 +250,8 @@
             }
         }
     </style>
+
+
 </head>
 
 <body>
@@ -226,6 +276,18 @@
                 with beautiful birds, yet a short drive away from world-class shopping, restaurants and entertainment.
                 Bring a book and leave your laptop the office. You won't want to go back home.</p>
             <img src="images/pool.jpg" class="img-centre" alt="pool" title="The Striped Umbrella Pool">
+            <figure>
+                <img src="images/mobile-mockup.jpg" alt="Small Screens Mockup">
+                <figcaption>Mobile Devices - Small Screens Mockup</figcaption>
+            </figure>
+            <figure>
+                <img src="images/tablet-mockup.jpg" alt="Medium Screens Mockup">
+                <figcaption>Tablet Devices - Medium Screens Mockup</figcaption>
+            </figure>
+            <figure>
+                <img src="images/desktop-mockup.jpg" alt="Large Screens Mockup">
+                <figcaption>Desktop Devices - Large Screens Mockup</figcaption>
+            </figure>
             <h3>What you need to know about our Spa</h3>
             <p>A spa is a location where mineral-rich spring water (sometimes seawater) is used to give medicinal baths.
                 Spa towns or sp resorts (including hot spring resorts) typically offer various beneficial health

@@ -4,45 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--	
-        First Step:
-        By default Mobile devices zoom out the page 
-        to make it all fit within the screen of our mobile devices. 
-        We need to disable this default feature using meta element:
-
-        for any Responsive website, we have to add this line of code:
-        we can just copy the following template line from w3schools
-    -->
-    <!-- using meta element -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RWD Part2</title>
-    <!-- RWD: Responsive Web Design -->
-    <!-- Internal Styles -->
+    <title>RWD Part#2</title>
+
     <style>
-        /* 
-        Two main parts:
-        - Global Styles: the styles that we need for every device/view-port
-         the rules (styles) that applied to any media (or and device)
-        - Specific Styles: the styles that we need for specific devices/view-ports
+        /*  
+        Starting with the global rules first
+        then moving to media queries and starting with small screen first
         */
 
-
         /* Global Styles for any device */
-
-        /* 
-        to override the default styles for the browsers 
-        like adding margins for p or div elements etc...
-	*/
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        /*
-	we need to make sure that the new HTML5 elements 
-    that we use in this website are displayed as block elements 
-    only for the very old browsers versions
-*/
         header,
         footer,
         section,
@@ -72,22 +49,28 @@
         main {
             /* 
             This property to fix the issue with the floating 
-            maybe we need this rule to work with 2 media queries medium and large
+            maybe we need this rule to work with 2 media queries:
+            - For medium screen => Example: Tablet with hight resolutions like (iPad Pro)
+            - For large screen => Example: Desktop-laptop (Large screens)
+            
+            So instead of writing this rule two times inside each 2 media blocks
+            we can just add it to our global CSS rules
             */
             overflow: hidden;
         }
 
-        /* 
-        We can put the float left to be global because we want to apply the same rules 
-        for 2 media queries:
-        - Tablet with hight resolutions like (iPad Pro)
-        - Desktop-laptop (Large screens)
+        /*
+        Again, we can put the float left to be "global" rule 
+        because we want to apply the same rules for 2 media queries:
+        - For medium screen => Example: Tablet with hight resolutions like (iPad Pro)
+        - For large screen => Example: Desktop-laptop (Large screens)
 
         similar to MDN website:
         */
         main section,
         main aside {
             float: left;
+            padding: 7px;
         }
 
         main section {
@@ -108,36 +91,30 @@
             margin-left: 20px;
         }
 
+        img {
+            max-width: 100%;
+        }
+
         /* We are done with the global styles above */
-
-        /* 
-	    Mobile First*: for mobile phones:
-	    w3schools*: This will make the page display faster on smaller devices
-	
-        Google:
-        iphonex: width 375px
-        iphone plus and Galaxy node9: width 41px
-        Galaxy S5: width 360px
-        iphone 5: width 320px
-        */
-
         /* For mobile (Small Screen) */
-        @media only screen and (max-width: 415px) {
+        @media screen and (max-width: 570px) {
 
             /*	for testing */
             header {
                 background-color: brown;
             }
 
-            /* 
+            /*
             Here we need to change the layout:
             - aside (by itself)
             - main (by itself)
             - aside (by itself)
 
-            Remember that all of these elements have float: left;
+            Remember that all of these elements have the property: float: left;
+            in the Global Rules
 
-            We need to disable the float: left! for all of them
+            In small screens (link in mobile devices), we need to disable the float: left! for all of these element
+            to have return to their default behaviour as block-level element
             */
             main section,
             main aside {
@@ -149,8 +126,8 @@
 
         }
 
-        /* For tablet (Medium Screen) */
-        @media only screen and (min-width:416px) and (max-width:800px) {
+        /* For tablet (Medium Screen) we can set the minimum by 1px above the previous media maximum */
+        @media screen and (min-width: 571px) and (max-width: 800px) {
 
             /*	for testing no changes needed! */
             header {
@@ -158,7 +135,7 @@
             }
         }
 
-        /* For desktop/laptop (Normal Screen) */
+        /* For desktop/laptop (Normal Screen)  we can set the minimum by 1px above the previous media maximum */
         @media only screen and (min-width:801px) {
 
             /*	for testing no changes needed! */
@@ -204,7 +181,9 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A incidunt accusamus nam, excepturi,
                         temporibus minus exercitationem veniam culpa pariatur. Repellendus dolorum facilis rem debitis
                         ad.
-                        Eveniet maiores facere odio architecto.</p>
+                        Eveniet maiores facere odio architecto.
+                    </p>
+                    <img src="images/RWD-Mockup1.jpg" alt="Current Page Mockup">
                 </article>
                 <article>
                     <h2>Travel with GreenStart</h2>
@@ -226,10 +205,12 @@
                     ex. Et?</p>
             </aside>
 
-            <!-- One of the solution for fixing the floating issue -->
+            <!-- 
+                One of the solution for fixing the floating issue 
+            -->
             <!-- <div style="clear:both"></div> -->
         </main>
-        <footer> &copy; 2021 GreenStart. All rights reserved. RWD Part 1</footer>
+        <footer> &copy; 2021 GreenStart. All rights reserved. RWD Part 2</footer>
     </div>
 </body>
 
